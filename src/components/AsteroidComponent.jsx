@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Globe from "globe.gl";
 import * as THREE from "three";
 import asteroidTextureImg from "../../public/astroid.jpg"; // Import the asteroid image
-const moonTextureUrl = "https://nasa3d.arc.nasa.gov/shared_assets/thumbnails/as08-17-2704/428x321"; 
-import Navbar from '../components/Navbar/Navbar'
+const moonTextureUrl =
+  "https://nasa3d.arc.nasa.gov/shared_assets/thumbnails/as08-17-2704/428x321";
+import Navbar from "../components/Navbar/Navbar";
+import DatePicker from "react-datepicker"; // Import date picker
+import "react-datepicker/dist/react-datepicker.css"; // Import date picker CSS
 
 const EARTH_RADIUS_KM = 6371; // Earth's radius in kilometers
 const ASTEROID_SIZE = 60; // Default size for the asteroid object
@@ -21,14 +24,16 @@ const AsteroidGlobe = () => {
   const moonMeshRef = useRef(); // Reference to the moon mesh
   const [selectedAsteroid, setSelectedAsteroid] = useState(null); // State for the currently selected asteroid
   const [sidebarOpen, setSidebarOpen] = useState(false); // State for sidebar visibility
+  const [startDate, setStartDate] = useState(new Date()); // State for selected date
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   // Fetch Near-Earth Asteroid data from NASA NeoWs API
   useEffect(() => {
-    const fetchAsteroids = async () => {
+    const fetchAsteroids = async (date) => {
+      const formattedDate = date.toISOString().split("T")[0]; // Format date as YYYY-MM-DD
       try {
         const response = await fetch(
-          `https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-10-01&end_date=2024-10-07&api_key=${NASA_API_KEY}`
+          `https://api.nasa.gov/neo/rest/v1/feed?start_date=${formattedDate}&end_date=${formattedDate}&api_key=${NASA_API_KEY}`
         );
         const neoData = await response.json();
 
@@ -42,11 +47,15 @@ const AsteroidGlobe = () => {
             newAsteroids.push({
               lat: Math.random() * 180 - 90, // Random latitude for movement (adjust as necessary)
               lng: Math.random() * 360 - 180, // Random longitude for movement (adjust as necessary)
-              alt: asteroid.estimated_diameter.kilometers.estimated_diameter_max / 1000, // Relative altitude
+              alt:
+                asteroid.estimated_diameter.kilometers.estimated_diameter_max /
+                1000, // Relative altitude
               name: asteroid.name,
-              velocity: asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour, // Set velocity for movement
+              velocity:
+                asteroid.close_approach_data[0].relative_velocity
+                  .kilometers_per_hour, // Set velocity for movement
               details: asteroid, // Store the full details for hover
-              id : asteroid.id,
+              id: asteroid.id,
             });
           });
         });
@@ -57,8 +66,8 @@ const AsteroidGlobe = () => {
       }
     };
 
-    fetchAsteroids();
-  }, []);
+    fetchAsteroids(startDate);
+  }, [startDate]);
 
   useEffect(() => {
     const world = Globe()(globeEl.current)
@@ -69,11 +78,42 @@ const AsteroidGlobe = () => {
       .objectLng("lng")
       .objectAltitude("alt")
       .objectLabel("name")
-      .onObjectClick((asteroid ) => navigate(`/orbit/${asteroid.id}`) )
-      .onObjectHover((asteroid) => setHoveredAsteroid(asteroid ? asteroid.details : null));
+      .onObjectClick((asteroid) => navigate(`/orbit/${asteroid.id}`))
+      .onObjectHover((asteroid) =>
+        setHoveredAsteroid(asteroid ? asteroid.details : null)
+      );
 
     // Load the asteroid texture
     const asteroidTexture = new THREE.TextureLoader().load(asteroidTextureImg);
+
+    if (selectedAsteroid) {
+      world.pointOfView(
+        {
+          lat: selectedAsteroid.lat,
+          lng: selectedAsteroid.lng,
+          altitude: selectedAsteroid.alt + 0.1,
+        },
+        5000 // Duration of the rotation in milliseconds
+      );
+
+      const { lat, lng, alt } = selectedAsteroid;
+      world.camera().position.set(lat, lng, alt); // Reset camera position
+    }
+
+    // Resize handler to update camera aspect ratio
+    const handleResize = () => {
+      const { clientWidth, clientHeight } = globeEl.current;
+      const camera = world.camera();
+      camera.aspect = clientWidth / clientHeight; // Update camera aspect ratio
+      camera.updateProjectionMatrix(); // Recalculate the projection matrix
+      world.renderer().setSize(clientWidth, clientHeight); // Update renderer size
+    };
+
+    // Listen to window resize
+    window.addEventListener("resize", handleResize);
+
+    // Trigger resize handler initially to set the camera
+    handleResize();
 
     // Create geometries for the asteroids and moon
     const asteroidGeometry = new THREE.SphereGeometry(
@@ -81,13 +121,17 @@ const AsteroidGlobe = () => {
       16,
       16
     );
-    const moonGeometry = new THREE.SphereGeometry((MOON_RADIUS_KM / EARTH_RADIUS_KM) * 1.5, 32, 32);
+    const moonGeometry = new THREE.SphereGeometry(
+      (MOON_RADIUS_KM / EARTH_RADIUS_KM) * 1.5,
+      32,
+      32
+    );
 
     // Create materials with the textures
     const asteroidMaterial = new THREE.MeshLambertMaterial({
       map: asteroidTexture,
       transparent: true,
-      opacity: 0.8,
+      opacity: 1.0,
     });
 
     const moonTexture = new THREE.TextureLoader().load(moonTextureUrl);
@@ -144,16 +188,13 @@ const AsteroidGlobe = () => {
     // Start the asteroid animation loop
     animateAsteroids();
 
-      }, [asteroids]);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [asteroids, selectedAsteroid]);
 
-  const handleAsteroidClick = (asteroid) => {
+  const handleAsteroidClick = (e, asteroid) => {
     setSelectedAsteroid(asteroid); // Set the selected asteroid state
-
-    // Rotate the globe to the clicked asteroid's position
-    globeEl.current.pointOfView(
-      { lat: asteroid.lat, lng: asteroid.lng }, // Move to the asteroid's location
-      3000 // Duration of the rotation in milliseconds
-    );
 
     // Move the moon to the clicked asteroid's position
     moonMeshRef.current.position.set(asteroid.lng / 100, asteroid.lat / 100, 0);
@@ -163,47 +204,75 @@ const AsteroidGlobe = () => {
     setSidebarOpen(!sidebarOpen); // Toggle sidebar visibility
   };
 
+  const handleDateChange = (date) => {
+    setStartDate(date); // Update the selected date
+  };
+
   return (
     <>
-    <Navbar/>
-    <div className="flex relative">
-      <div ref={globeEl} className="w-full h-screen" />
-      <div className={`fixed top-0 left-0 bg-gray-800 text-white p-4 transition-transform duration-300 ease-in-out ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} w-80 h-screen overflow-y-auto shadow-lg`}>
-        <h2 className="text-center mb-4 mt-20">Asteroids</h2>
-        <ul className="list-none p-0">
-          {asteroids.map((asteroid, index) => (
-            <li
-              key={index}
-              onClick={() => handleAsteroidClick(asteroid)}
-              className={`cursor-pointer p-2 rounded transition-colors duration-300 ${selectedAsteroid === asteroid ? "bg-gray-700" : "hover:bg-gray-600"}`}
-            >
-              {asteroid.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {/* Toggle Button at the top right */}
-      <button 
-        onClick={toggleSidebar} 
-        className="fixed top-16 mt-10 right-4 z-50 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
-      >
-        {sidebarOpen ? "✖" : "☰"} {/* Hamburger and close icon */}
-      </button>
-      {hoveredAsteroid && (
-        <div
-          className="absolute bottom-24 right-4 bg-black bg-opacity-80 text-white p-3 rounded"
-        >
-          <h3>{hoveredAsteroid.name}</h3>
-          <p>
-            <strong>Diameter (km):</strong>{" "}
-            {hoveredAsteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}
-          </p>
-          <p>
-            <strong>Velocity (km/h):</strong> {hoveredAsteroid.close_approach_data[0].relative_velocity.kilometers_per_hour}
-          </p>
+      <Navbar />
+      <div className="flex relative">
+        <div ref={globeEl} className="w-full h-screen" />
+
+        {/* Date Picker */}
+        <div className="fixed top-16 left-12 z-50 bg-gray-800 text-white p-2 rounded shadow-lg">
+          <label>Select a Date: </label>
+          <DatePicker
+            selected={startDate}
+            onChange={handleDateChange}
+            dateFormat="yyyy-MM-dd"
+            className="text-gray-800 p-1"
+          />
         </div>
-      )}
-    </div>
+
+        <div
+          className={`fixed top-32 left-0 bg-gray-800 text-white p-4 transition-transform duration-300 ease-in-out ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } w-80 h-screen overflow-y-auto shadow-lg`}
+        >
+          <h2 className="text-center mb-4 ">Asteroids</h2>
+          <ul className="list-none p-0">
+            {asteroids.map((asteroid, index) => (
+              <li
+                key={index}
+                onClick={(e) => handleAsteroidClick(e, asteroid)}
+                className={`cursor-pointer p-2 rounded transition-colors duration-300 ${
+                  selectedAsteroid === asteroid
+                    ? "bg-gray-700"
+                    : "hover:bg-gray-600"
+                }`}
+              >
+                {asteroid.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* Toggle Button at the top right */}
+        <button
+          onClick={toggleSidebar}
+          className="fixed top-16 left-2 z-50 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
+        >
+          {sidebarOpen ? "✖" : "☰"} {/* Hamburger and close icon */}
+        </button>
+        {hoveredAsteroid && (
+          <div className="absolute bottom-24 right-4 bg-black bg-opacity-80 text-white p-3 rounded">
+            <h3>{hoveredAsteroid.name}</h3>
+            <p>
+              <strong>Diameter (km):</strong>{" "}
+              {hoveredAsteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(
+                2
+              )}
+            </p>
+            <p>
+              <strong>Velocity (km/h):</strong>{" "}
+              {
+                hoveredAsteroid.close_approach_data[0].relative_velocity
+                  .kilometers_per_hour
+              }
+            </p>
+          </div>
+        )}
+      </div>
     </>
   );
 };
