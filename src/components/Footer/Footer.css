@@ -1,0 +1,79 @@
+.footer {
+    background-color: #000000;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 2rem; /* Use padding instead of height for better layout */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    z-index: 100; /* Keep this for the footer */
+}
+
+.footer-content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1rem; 
+}
+
+.slogan {
+    font-size: 1.5em;
+    color: #b3b3b3;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0; 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.social-links li {
+    margin: 0 15px; 
+}
+
+.social-links a {
+    color: #f1f1f1; 
+    font-size: 2rem; /* Adjusted size for better responsiveness */
+    transition: color 0.3s ease; 
+    position: relative; /* Required for z-index to work */
+    z-index: 200; /* Higher z-index for better hover effect */
+}
+
+.social-links a:hover {
+    color: #007BFF; /* Change color to blue on hover */
+}
+
+p {
+    font-size: 0.9rem; 
+    color: #b3b3b3; 
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        gap: 0.5rem; /* Reduced gap for smaller screens */
+    }
+    
+    .slogan {
+        font-size: 1.2em; /* Smaller slogan text on mobile */
+    }
+
+    .social-links a {
+        font-size: 1.5rem; /* Smaller icons on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .slogan {
+        font-size: 1em; /* Further reduce slogan size */
+    }
+
+    .social-links a {
+        font-size: 1.2rem; /* Even smaller icons for very small screens */
+    }
+}
