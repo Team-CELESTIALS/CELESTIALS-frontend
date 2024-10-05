@@ -210,44 +210,6 @@ const AsteroidGlobe = () => {
 
   return (
     <>
-<<<<<<< HEAD
-    <Navbar/>
-    <div className="flex relative">
-      <div ref={globeEl} className="w-full h-screen" />
-      <div className={`fixed top-0 left-0 bg-gray-800 text-white p-4 transition-transform duration-300 ease-in-out ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} w-80 h-screen overflow-y-auto shadow-lg`}>
-        <h2 className="text-center mb-4 mt-20">Asteroids</h2>
-        <ul className="list-none p-0">
-          {asteroids.map((asteroid, index) => (
-            <li
-              key={index}
-              onClick={() => handleAsteroidClick(asteroid)}
-              className={`cursor-pointer p-2 rounded transition-colors duration-300 ${selectedAsteroid === asteroid ? "bg-gray-700" : "hover:bg-gray-600"}`}
-            >
-              {asteroid.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {/* Toggle Button at the top right */}
-      <button 
-        onClick={toggleSidebar} 
-        className="fixed top-16 mt-10 right-4 z-5 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
-      >
-        {sidebarOpen ? "✖" : "☰"} {/* Hamburger and close icon */}
-      </button>
-      {hoveredAsteroid && (
-        <div
-          className="absolute bottom-24 right-4 bg-black bg-opacity-80 text-white p-3 rounded"
-        >
-          <h3>{hoveredAsteroid.name}</h3>
-          <p>
-            <strong>Diameter (km):</strong>{" "}
-            {hoveredAsteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}
-          </p>
-          <p>
-            <strong>Velocity (km/h):</strong> {hoveredAsteroid.close_approach_data[0].relative_velocity.kilometers_per_hour}
-          </p>
-=======
       <Navbar />
       <div className="flex relative">
         <div ref={globeEl} className="w-full h-screen" />
@@ -261,7 +223,6 @@ const AsteroidGlobe = () => {
             dateFormat="yyyy-MM-dd"
             className="text-gray-800 p-1"
           />
->>>>>>> origin/main
         </div>
 
         <div

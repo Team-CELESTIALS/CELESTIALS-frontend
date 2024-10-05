@@ -65,6 +65,17 @@ const teamMembers = [
       instagram: "https://instagram.com/evagreen",
     },
   },
+  {
+    name: "Manoj Joshi",
+    title: "UI UX Designer",
+    image: "https://avatars.githubusercontent.com/u/78907808?v=4",
+    social: {
+      twitter: "https://twitter.com/evagreen",
+      linkedin: "https://linkedin.com/in/evagreen",
+      github: "https://github.com/evagreen",
+      instagram: "https://instagram.com/evagreen",
+    },
+  },
 ];
 
 const Team = () => {

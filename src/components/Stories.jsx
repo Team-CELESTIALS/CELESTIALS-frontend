@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 
-// Sample data for space-related news
-const newsArticles = [
-  {
-    title: "NASA's Artemis I Mission Successfully Returns to Earth",
-    description: "NASA’s Artemis I mission successfully concluded with the Orion spacecraft splashing down in the Pacific Ocean.",
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.aXZwXYtWHC75HBFBXgm8kQHaEK%26pid%3DApi&f=1&ipt=312cdfb1f1e8799658f2fa89c341e7e9f9c15f49eaa24786ec4b03389d4f1685&ipo=images", // Replace with an actual image URL
-    link: "https://www.nasa.gov/artemis1", // Replace with the actual link
-  },
-  {
-    title: "James Webb Space Telescope Reveals New Details of the Universe",
-    description: "The James Webb Space Telescope has captured stunning new images of galaxies billions of light-years away.",
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DweqH97TVhgKo0UPMFhEKgHaEK%26pid%3DApi&f=1&ipt=404e7e8e66eb95d7a7019ee350f27419f17772e397b32ca0c2fb094231fcc16f&ipo=images", // Replace with an actual image URL
-    link: "https://www.nasa.gov/webb", // Replace with the actual link
-  },
-  {
-    title: "China's Lunar Rover Discovers New Minerals on Moon",
-    description: "China’s lunar rover has discovered new minerals on the Moon's surface, shedding light on its geological history.",
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.kwZdHUQDJ3g8hjlsQZLA2QHaES%26pid%3DApi&f=1&ipt=29bb2257f87b52290ce533696b5950804360a9ae535972dd60cb56bf7864dce9&ipo=images", // Replace with an actual image URL
-    link: "https://www.chinaspace.gov/lunar-rover", // Replace with the actual link
-  },
-];
-
 const Stories = () => {
+  const [newsArticles, setNewsArticles] = useState([]); // State to hold news articles
+  const [loading, setLoading] = useState(true); // State to manage loading status
+
+  // Fetch data from the API on component mount
+  useEffect(() => {
+    const fetchNewsArticles = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/post");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setNewsArticles(data); // Set fetched articles to state
+      } catch (error) {
+        console.error("Failed to fetch news articles:", error);
+      } finally {
+        setLoading(false); // Update loading status
+      }
+    };
+
+    fetchNewsArticles();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center text-white">
+        <h2 className="text-2xl font-bold">Loading Articles...</h2>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />

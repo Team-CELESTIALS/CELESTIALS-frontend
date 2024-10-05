@@ -14,7 +14,7 @@ const Auth = () => {
   const [email, setEmail] = useState(""); // Default email
   const [password, setPassword] = useState(""); // Default password
   const [registrationNumber, setRegistrationNumber] = useState(""); // Default registration number
-  const [userImage, setUserImage] = useState(""); // Default user image URL
+  const [userImage, setUserImage] = useState("https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"); // Default user image URL
 
   const validateInputs = () => {
     if (mode === "signUp") {
@@ -37,6 +37,10 @@ const Auth = () => {
         });
         toast.success("Account Created Successfully");
         console.log("Response:", res.data);
+
+        // Store token and user data in localStorage
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // Store user details
       } catch (err) {
         toast.error(err.response?.data?.message || err.message);
       } finally {
@@ -61,10 +65,14 @@ const Auth = () => {
         });
         toast.success("Login Success");
         console.log("Response:", res.data);
-        
+
+        // Store token and user data in localStorage
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // Store user details
+
         // Redirect to home route after successful login
         navigate("/"); // Redirect to home
-        
+
       } catch (err) {
         toast.error(err.response?.data?.message || err.message);
       } finally {
@@ -80,7 +88,7 @@ const Auth = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="bg-black relative overflow-hidden pt-10">
         {/* Star background effect */}
         <div className="bg-animation">

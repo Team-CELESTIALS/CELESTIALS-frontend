@@ -12,8 +12,9 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Stories from "./components/Stories";
 import Team from "./components/Team";
 import OrbitViewer from "./components/asteroid/OrbitViewer";
-import Admin from "./Admin";
 import Signup from "../src/components/Auth";
+import Profile from "./components/Profile";
+import Admin from "./Admin";
 
 const App = () => {
   return (
@@ -28,10 +29,11 @@ const App = () => {
         <Route path="/stories" element={<Stories />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/data-visualize" element={<AsteroidGlobe />} />
         <Route path="/orbit/:asteroidId" element={<OrbitViewer />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );
