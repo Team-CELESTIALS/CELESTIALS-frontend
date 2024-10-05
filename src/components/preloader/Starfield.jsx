@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import zoomSound from '../../../public/sound.mp3'; // Replace with your own sound file path
 import logo from '../../../public/logo.png'; // Replace with your own logo path
@@ -6,6 +6,7 @@ import logo from '../../../public/logo.png'; // Replace with your own logo path
 const Starfield = () => {
   const mountRef = useRef(null);
   const audioRef = useRef(null);
+  const [audioReady, setAudioReady] = useState(false); // State to track if audio can be played
 
   useEffect(() => {
     // Set up scene, camera, and renderer
@@ -18,7 +19,7 @@ const Starfield = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Star generation (increase star count for more density)
+    // Star generation
     const stars = new THREE.Group();
     scene.add(stars);
 
@@ -55,7 +56,6 @@ const Starfield = () => {
     audioRef.current = audio;
     audio.loop = true;
     audio.volume = 0.4;  // Start with low volume
-    audio.play();
 
     // Animate stars zooming in with sound effect increasing
     let speed = 0.1; // Adjust zoom speed
@@ -73,7 +73,7 @@ const Starfield = () => {
       speed += 0.0005;
       soundRate += 0.001;  // Gradually increase sound pitch
 
-      if (audioRef.current) {
+      if (audioReady && audioRef.current) {
         audioRef.current.playbackRate = soundRate; // Adjust sound speed with zoom
         audioRef.current.volume = Math.min(speed * 2, 1);  // Increase volume gradually
       }
@@ -96,13 +96,32 @@ const Starfield = () => {
 
       renderer.dispose();
     };
+  }, [audioReady]);
+
+  // Function to handle user interaction
+  const handleUserInteraction = () => {
+    if (audioRef.current && !audioReady) {
+      audioRef.current.play().then(() => {
+        setAudioReady(true); // Mark audio as ready to play
+      }).catch((error) => {
+        console.error("Audio playback failed: ", error);
+      });
+    }
+  };
+
+  // Add event listener for user interaction
+  useEffect(() => {
+    window.addEventListener('click', handleUserInteraction);
+    return () => {
+      window.removeEventListener('click', handleUserInteraction);
+    };
   }, []);
 
   return (
     <div ref={mountRef} style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="team-logo" style={logoStyle}>
-        <img src={logo} alt="Team CLESTIALS Logo" style={imageStyle} />
-        <div style={textStyle}>Team CLESTIALS</div>
+        <img src={logo} alt="Team CELESTIALS Logo" style={imageStyle} />
+        <div style={textStyle}>Team CELESTIALS</div>
       </div>
     </div>
   );
@@ -111,9 +130,12 @@ const Starfield = () => {
 // Styles for the logo and text
 const logoStyle = {
   position: 'absolute',
-  bottom: '20px',  // Adjust as needed
-  left: '50%',
-  transform: 'translateX(-50%)',
+  top: '50%',  // Center vertically
+  left: '50%', // Center horizontally
+  transform: 'translate(-50%, -50%)', // Adjust for true center
+  display: 'flex', // Use flexbox
+  flexDirection: 'column', // Align items in a column
+  alignItems: 'center', // Center items horizontally
   textAlign: 'center',
   color: '#00bfff', // Text color
   textShadow: '0 0 10px rgba(0, 191, 255, 0.8)', // Blue glow effect
@@ -123,7 +145,7 @@ const logoStyle = {
 const imageStyle = {
   width: '100px', // Adjust size as needed
   height: 'auto',
-  marginBottom: '10px', // Space between logo and text
+  marginBottom: '5px', // Space between logo and text
 };
 
 const textStyle = {

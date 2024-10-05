@@ -10,19 +10,20 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the preloader has been displayed before
-    const preloaderShown = localStorage.getItem("preloaderShown");
+    // Check if the loader has been shown before
+    const hasLoadedBefore = localStorage.getItem("hasLoadedBefore");
 
-    if (!preloaderShown) {
+    if (!hasLoadedBefore) {
+      // Show the preloader for 5 seconds on the first load
       const timeout = setTimeout(() => {
         setLoading(false);
-        // Set in localStorage that the preloader has been shown
-        localStorage.setItem("preloaderShown", "true");
-      }, 3500); // 3.5 seconds for the loading
+        // Set the flag in localStorage so it doesn't show again
+        localStorage.setItem("hasLoadedBefore", "true");
+      }, 5000); // 5 seconds for the loading
 
       return () => clearTimeout(timeout);
     } else {
-      // If the preloader has been shown, set loading to false immediately
+      // If already loaded, skip the preloader
       setLoading(false);
     }
   }, []);
@@ -30,7 +31,7 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        <Starfield /> 
+        <Starfield />
       ) : (
         <>
           <Navbar />

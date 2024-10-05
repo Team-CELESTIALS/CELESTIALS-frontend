@@ -185,7 +185,7 @@ const AsteroidGlobe = () => {
       {/* Toggle Button at the top right */}
       <button 
         onClick={toggleSidebar} 
-        className="fixed top-16 mt-10 right-4 z-50 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
+        className="fixed top-16 mt-10 right-4 z-5 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
       >
         {sidebarOpen ? "✖" : "☰"} {/* Hamburger and close icon */}
       </button>

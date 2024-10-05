@@ -19,7 +19,7 @@ const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/stories', label: 'Stories' },
-    { path: '/data-visualize', label: 'Astroids' },
+    { path: '/data-visualize', label: 'Asteroids' },
     { path: '/team', label: 'Team' },
     { path: '/contact', label: 'Contact' },
   ];
@@ -48,9 +48,8 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-1">
         {/* Logo section */}
         <Link className="navbar-brand flex items-center" to="/">
-  <img src={logo} className="w-24 h-auto object-cover pb-2" alt="NASA Logo" /> {/* Adjusted size */}
-</Link>
-
+          <img src={logo} className="w-24 h-auto object-cover pb-2" alt="NASA Logo" /> {/* Adjusted size */}
+        </Link>
 
         {/* Mobile menu button */}
         <button
@@ -71,7 +70,7 @@ const Navbar = () => {
                 <Link
                   className={`nav-link relative group font-bold transition-all duration-300 ease-in-out py-2 px-4 font-montserrat ${
                     window.location.pathname === link.path ? 'text-blue-500' : 'text-white hover:text-blue-400'
-                  }`} 
+                  }`}
                   to={link.path}
                   style={{ fontFamily: 'Montserrat, sans-serif' }} // Using Montserrat for nav links
                 >
@@ -82,6 +81,13 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          {/* Sign up button */}
+          <Link
+            to="/signup"
+            className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+          >
+            Sign up
+          </Link>
         </div>
       </div>
 
@@ -111,6 +117,14 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              {/* Sign up button in mobile menu */}
+              <Link
+                to="/signup"
+                className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+                onClick={closeMenu}
+              >
+                Sign up
+              </Link>
             </ul>
           </div>
         </div>
