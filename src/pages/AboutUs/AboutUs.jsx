@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import Team from '../../components/Team';
+import WhatWeDo from '../../components/WhatWeDo/WhatWeDo';
 import './AboutUs.css'; // Importing the CSS for AboutUs page
 
 // Animation variants
@@ -24,68 +26,42 @@ const AboutUs = () => {
         </div>
 
         <div className="about-us-container bg-gray-900">
-          <section className="about-us-content">
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 1.0 }}  // Extended duration for smoothness
-              style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }} // Poppins Bold for heading
-            >
-              Team-CELESTIALS
-            </motion.h1>
+          {/* Team Component */}
+          <Team />
 
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 1.0, delay: 0.2 }}  // Extended delay for staggered effect
-              className="about-members"
-              style={{ fontFamily: 'Montserrat, sans-serif' }} // Keep the body text as Montserrat
-            >
-              <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>About Members</h2>
-              <p>
-                We're passionate computer engineers from the far western side of Mahendranagar, 
-                eager to innovate and learn new things by creating groundbreaking solutions. 
-                Our team consists of a frontend master, backend master, app developer, and a full-stack developer.
+          {/* Two Columns: About Our Journey and Our Challenge */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 1.0, delay: 0.2 }}
+            className="about-content-container"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            {/* Journey Section */}
+            <div className="about-journey">
+              <h2 className="text-3xl font-bold text-white mb-4">About Our Journey</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Our journey in this hackathon has been both exciting and challenging. We have tackled problems from designing interactive web solutions
+                to implementing real-time simulations. Our team thrives on curiosity and a love for exploration, which has driven us to participate in this
+                prestigious event. With each challenge, we strive to go beyond what's expected and deliver results that are impactful and meaningful.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 1.0, delay: 0.4 }}  // Extended delay for smoother stagger
-              className="about-team"
-              style={{ fontFamily: 'Montserrat, sans-serif' }} // Keep the body text as Montserrat
-            >
-              <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>About the Team</h2>
-              <p>
-                Our team has experience participating in these kinds of challenges, and we're always excited to tackle 
-                new problems with fresh perspectives. We're driven by a passion for learning and pushing the boundaries 
-                of what's possible. If you're a participant who loves to explore, innovate, and collaborate, we invite you 
-                to join us on this journey toward creating impactful solutions!
+            {/* Challenge Section */}
+            <div className="about-challenge">
+              <h2 className="text-3xl font-bold text-white mb-4">Our Challenge</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                The NASA Space Apps challenge tasked us with creating an interactive model of the solar system, commonly known as an orrery.
+                Our web app displays celestial bodies, including planets, Near-Earth Asteroids, Near-Earth Comets, and Potentially Hazardous 
+                Asteroids. By combining our technical skills and passion for space exploration, we aim to deliver an immersive experience that 
+                educates and fascinates users about our universe.
               </p>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 1.0, delay: 0.6 }}  // Extended delay for smoother stagger
-              className="about-challenge"
-              style={{ fontFamily: 'Montserrat, sans-serif' }} // Keep the body text as Montserrat
-            >
-              <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>About the Challenge</h2>
-              <p>
-                Since a mechanical model of the solar system was presented to Charles Boyle, 4th Earl of Orrery, in 1713, such models 
-                have been referred to as orreries. The first orreries were physical models, but today we can use numerous tools to 
-                create virtual orreries that have many more features than their ancient mechanical counterparts. Our challenge is to 
-                create an interactive orrery web app that is embedded in a webpage and displays celestial bodies such as planets, 
-                Near-Earth Asteroids, Near-Earth Comets, and Potentially Hazardous Asteroids.
-              </p>
-            </motion.div>
-          </section>
+          {/* What We Do Section */}
+          <WhatWeDo />
         </div>
       </div>
       <Footer />
