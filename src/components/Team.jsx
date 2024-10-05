@@ -24,7 +24,7 @@ const teamMembers = [
   {
     name: "Dipa Joshi",
     title: "Frontend Developer",
-    image: Dipa ,
+    image: Dipa,
     social: {
       twitter: ".",
       linkedin: "https://www.linkedin.com/in/dipa-joshi-548a79233/",
@@ -46,9 +46,9 @@ const teamMembers = [
   {
     name: "Asish Mehata",
     title: "UI/UX Designer",
-    image:Asish,
+    image: Asish,
     social: {
-      X: "https://x.com/asishmehata47",
+      twitter: "https://x.com/asishmehata47",
       linkedin: "https://linkedin.com/in/asishmehata48",
       github: "https://github.com/asishmehata48",
       instagram: "https://instagram.com/asishmehata48",
@@ -70,7 +70,6 @@ const teamMembers = [
 const Team = () => {
   return (
     <>
-      <Navbar />
       {/* Background */}
       <div className="bg-black">
         <div className="bg-animation">
@@ -80,7 +79,15 @@ const Team = () => {
           <div id="stars4"></div>
         </div>
         <div className="bg-gray-900 min-h-screen flex flex-col items-center pb-10">
-          <h1 className="text-4xl font-bold text-center mb-10 text-white pt-24">Meet Our Team</h1>
+          <h1 className="text-4xl font-bold text-center mb-5 text-white pt-24">Meet Our Team</h1>
+          
+          {/* Team introduction content */}
+          <p className="text-center text-lg text-gray-300 mb-8 px-4">
+            We are Team Celestials, a passionate group of innovators participating in the NASA Space Apps Hackathon. Our goal is to 
+            create solutions that have a lasting impact. Each member of our team brings a unique skill set, whether it's frontend 
+            development, backend systems, testing, documentaion or full-stack expertise. Together, we push the boundaries of technology.
+          </p>
+
           {/* Flexbox container for team members */}
           <div className="flex flex-wrap justify-center gap-8">
             {teamMembers.map((member, index) => (
@@ -139,7 +146,6 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

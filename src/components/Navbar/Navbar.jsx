@@ -19,8 +19,13 @@ const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/stories', label: 'Stories' },
+<<<<<<< HEAD
     { path: '/data-visualize', label: 'Asteroids' },
     { path: '/team', label: 'Team' },
+=======
+    { path: '/data-visualize', label: 'Astroids' },
+    // { path: '/team', label: 'Team' },
+>>>>>>> origin/main
     { path: '/contact', label: 'Contact' },
   ];
 

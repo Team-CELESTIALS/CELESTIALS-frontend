@@ -1,57 +1,50 @@
-
 .about-us-container {
-   
-    background-color: rgba(25, 7, 7, 0);
-    min-height: calc(100vh - 80px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #ffffff;
-
-    .about-us-content {
-        background-color: #1a1a1a67;
-        margin-top: 6rem;
-        margin-bottom: 2rem;
-        max-width: 900px;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        z-index: 1;
-    }
-    
-    .about-us-content h1 {
-        font-size: 2.8rem;
-        color: #ffffff;
-        margin-bottom: 20px;
-    }
-    
-    .about-us-content h2 {
-        font-size: 2rem;
-        color: #d9d9d9;
-        margin-bottom: 20px;
-    }
-    
-    .about-us-content p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #cccccc;
-        margin-bottom: 20px;
-    }
-    
-    @media (max-width: 768px) {
-        .about-us-content {
-          padding: 20px;
-        }
-    
-        .about-us-content h1 {
-          font-size: 2.2rem;
-        }
-    
-        .about-us-content p {
-          font-size: 1rem;
-        }
-    }
-    
+  background-color: rgba(25, 7, 7, 0);
+  /* min-height: calc(100vh - 80px); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
 }
 
+.about-content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; 
+  gap: 2rem; 
+  /* margin: 2rem 0; */
+  width: 100%; 
+  max-width: 1200px; 
+}
+
+.about-journey, .about-challenge {
+  flex: 1; 
+  min-width: 280px; 
+  max-width: 45%; 
+
+.about-journey h2, .about-challenge h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+ p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #cccccc;
+}
+
+@media (max-width: 768px) {
+  .about-content-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .about-journey, .about-challenge {
+    max-width: 100%; 
+    text-align: center; 
+  }
+}
+
+}
