@@ -20,13 +20,13 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     // Use EmailJS to send the email
     emailjs.send('service_rpl4n2n', 'template_z8orwi3', formData, 'gA2JhY7UkblAK_HIT')
       .then((response) => {
-        console.log('Email sent successfully!', response); // Log the response object directly
+        console.log('Email sent successfully!', response.status, response.text);
         toast.success('Email sent successfully!', {
-         
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 3000,
         });
         setIsSubmitted(true); // Set submitted state to true
@@ -34,12 +34,12 @@ const Contact = () => {
       }, (error) => {
         console.error('Failed to send email. Error:', error);
         toast.error('Failed to send email. Please try again.', {
-         
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 3000,
         });
       });
   };
-  
+
   const handleResend = () => {
     setIsSubmitted(false); // Reset submission status
     setFormData({ name: '', email: '', query: '' }); // Reset the form
@@ -62,7 +62,7 @@ const Contact = () => {
             {!isSubmitted ? ( // Check if form is submitted
               <form
                 onSubmit={handleSubmit}
-                className="w-full lg:w-1/2 mx-auto bg-transparent px-8 rounded-lg shadow-2xl z-10 relative"
+                className=" w-full lg:w-1/2 mx-auto bg-transparent px-8 rounded-lg shadow-2xl z-10 relative"
               >
                 <h1 className="text-4xl font-bold text-center mb-8 text-white">Contact Us</h1>
                 <div className="mb-6">

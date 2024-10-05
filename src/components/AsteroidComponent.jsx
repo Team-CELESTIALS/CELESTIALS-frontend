@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Globe from "globe.gl";
 import * as THREE from "three";
 import asteroidTextureImg from "../../public/astroid.jpg"; // Import the asteroid image
@@ -20,6 +22,7 @@ const AsteroidGlobe = () => {
   const [selectedAsteroid, setSelectedAsteroid] = useState(null); // State for the currently selected asteroid
   const [sidebarOpen, setSidebarOpen] = useState(false); // State for sidebar visibility
 
+  const navigate = useNavigate(); 
   // Fetch Near-Earth Asteroid data from NASA NeoWs API
   useEffect(() => {
     const fetchAsteroids = async () => {
@@ -43,6 +46,7 @@ const AsteroidGlobe = () => {
               name: asteroid.name,
               velocity: asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour, // Set velocity for movement
               details: asteroid, // Store the full details for hover
+              id : asteroid.id,
             });
           });
         });
@@ -65,6 +69,7 @@ const AsteroidGlobe = () => {
       .objectLng("lng")
       .objectAltitude("alt")
       .objectLabel("name")
+      .onObjectClick((asteroid ) => navigate(`/orbit/${asteroid.id}`) )
       .onObjectHover((asteroid) => setHoveredAsteroid(asteroid ? asteroid.details : null));
 
     // Load the asteroid texture
@@ -138,7 +143,8 @@ const AsteroidGlobe = () => {
 
     // Start the asteroid animation loop
     animateAsteroids();
-  }, [asteroids]);
+
+      }, [asteroids]);
 
   const handleAsteroidClick = (asteroid) => {
     setSelectedAsteroid(asteroid); // Set the selected asteroid state

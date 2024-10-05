@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'; // Importing Framer Motion for animation
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import Dipa from '../assets/dipa-image.jpg';
-import Asish from '../../public/asish.jpeg';
+import Asish from '../../public/Asish.jpg';
 import manish from '../../public/manish.jpg';
 import Jelina from '../../public/jelina.jpg';
 
@@ -48,10 +48,10 @@ const teamMembers = [
     title: "UI/UX Designer",
     image:Asish,
     social: {
-      twitter: "https://twitter.com/davidwilson",
-      linkedin: "https://linkedin.com/in/davidwilson",
-      github: "https://github.com/davidwilson",
-      instagram: "https://instagram.com/davidwilson",
+      X: "https://x.com/asishmehata47",
+      linkedin: "https://linkedin.com/in/asishmehata48",
+      github: "https://github.com/asishmehata48",
+      instagram: "https://instagram.com/asishmehata48",
     },
   },
   {
