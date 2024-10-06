@@ -64,7 +64,7 @@ const Stories = () => {
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#634da3] transition"
                 >
                   Read More
                 </a>
