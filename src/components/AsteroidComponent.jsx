@@ -213,7 +213,7 @@ const AsteroidGlobe = () => {
     <>
       <Navbar />
       <div className="flex relative">
-        <div ref={globeEl} className="w-full h-screen" />
+        <div ref={globeEl} className="w-full h-screen overflow-hidden" />
 
         {/* Date Picker */}
         <div className="fixed left-12 z-50 text-white p-2 rounded shadow-lg date-picker">

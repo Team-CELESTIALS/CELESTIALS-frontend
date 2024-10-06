@@ -5,6 +5,29 @@
   text-align: center;
 }
 
+/* custom scroll bars  */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+::-webkit-scrollbar-track {
+    background: #f1f1f11c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+
+
+
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,5 +63,4 @@
 .read-the-docs {
   color: #888;
 }
-
-
+}

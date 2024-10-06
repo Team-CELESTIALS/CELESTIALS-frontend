@@ -68,7 +68,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -81,7 +81,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -94,13 +94,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Type your query here"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+                  className="w-full bg-[#634da3] text-white px-4 py-2 rounded-lg hover:bg-[#634da3] transition duration-300"
                 >
                   Submit
                 </button>
@@ -111,7 +111,7 @@ const Contact = () => {
                 <p className="text-white mb-4">Thank you for contacting us. We will get back to you soon!</p>
                 <button
                   onClick={handleResend}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+                  className="bg-[#634da3] text-white px-4 py-2 rounded-lg hover:bg-[#634da3] transition duration-300"
                 >
                   Resend Message
                 </button>
