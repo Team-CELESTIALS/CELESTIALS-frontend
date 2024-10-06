@@ -69,6 +69,10 @@ const SolarSystem = () => {
     controls.dampingFactor = 0.25;
     controls.maxPolarAngle = Math.PI / 2;
 
+    // Set limits on zoom
+    controls.minDistance = 10;  // Minimum zoom-in distance
+    controls.maxDistance = 300;  // Maximum zoom-out distance
+
     // Initial camera position
     camera.position.set(30, 0, -60);
     controls.target.set(0, 0, 0);
@@ -135,10 +139,8 @@ const SolarSystem = () => {
     
       controls.update();
       renderer.render(scene, camera);
-  };
+    };
   
-  
-
     animate();
 
     // Cleanup function
@@ -152,8 +154,8 @@ const SolarSystem = () => {
 
   return (
    <>
-   <Navbar />
-   <div ref={sceneRef} />
+     <Navbar />
+     <div ref={sceneRef} />
    </>
   );
 };
