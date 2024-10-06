@@ -14,13 +14,13 @@ const SolarSystem = () => {
     earth: { radius: 6371, distanceFromSun: 149600000, texture: './earth.jpg' },
     moon: { radius: 1737.4, distanceFromEarth: 384400, texture: './moon.jpg' },
     asteroidCount: 100,
-    cometCount: 500,
+    cometCount: 5000,
     starCount: 100000,
   };
 
   useEffect(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000000);
+    const camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 10000000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
     sceneRef.current.appendChild(renderer.domElement);
@@ -70,7 +70,7 @@ const SolarSystem = () => {
     controls.maxPolarAngle = Math.PI / 2;
 
     // Initial camera position
-    camera.position.set(10, 20, 50);
+    camera.position.set(30, 0, -60);
     controls.target.set(0, 0, 0);
     controls.update();
 
@@ -121,17 +121,23 @@ const SolarSystem = () => {
     // Animate celestial objects
     const animate = () => {
       requestAnimationFrame(animate);
-      camera.position.z > 1 && (camera.position.z -= 1);
-      earth.rotation.y += 0.01;
-
-      const moonOrbitX = (celestialData.moon.distanceFromEarth / 10000) * Math.cos(Date.now() * 0.0002);
-      const moonOrbitZ = (celestialData.moon.distanceFromEarth / 10000) * Math.sin(Date.now() * 0.0002);
+    
+      // Make Earth rotate freely (slower rotation)
+      earth.rotation.y += 0.0005;  // Slower daily rotation
+      earth.rotation.x += 0.002; // Slower slight tilt on X-axis
+      earth.rotation.z += 0.002; // Slower slight tilt on Z-axis
+    
+      // Move the moon around the Earth (slower orbit)
+      const moonOrbitX = (celestialData.moon.distanceFromEarth / 10000) * Math.cos(Date.now() * 0.0001); // Slower orbital speed
+      const moonOrbitZ = (celestialData.moon.distanceFromEarth / 10000) * Math.sin(Date.now() * 0.0001); // Slower orbital speed
       moon.position.set(moonOrbitX + earth.position.x, 0, moonOrbitZ + earth.position.z);
-      moon.rotation.y += 0.002;
-
+      moon.rotation.y += 0.001; // Slower rotation for the moon
+    
       controls.update();
       renderer.render(scene, camera);
-    };
+  };
+  
+  
 
     animate();
 
