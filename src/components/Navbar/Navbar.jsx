@@ -124,7 +124,7 @@ const Navbar = () => {
                     ) : (
                         <Link
                             to="/signup"
-                            className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+                            className="border border-[#634da3] text-[#634da3] hover:bg-[#634da3] hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
                         >
                             Sign up
                         </Link>
@@ -149,7 +149,7 @@ const Navbar = () => {
                             {navLinks.map((link, index) => (
                                 <li key={index} className={`nav-item transition-opacity duration-300 delay-${index * 100} mb-4`}>
                                     <Link
-                                        className="font-bold text-lg hover:text-blue-400 py-4 px-6 font-montserrat"
+                                        className="font-bold text-lg hover:text-purple-400 py-4 px-6 font-montserrat"
                                         to={link.path}
                                         onClick={closeMenu}
                                     >
@@ -162,7 +162,7 @@ const Navbar = () => {
                         {/* Sign up button for mobile menu */}
                         <Link
                             to="/signup"
-                            className="mt-4 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+                            className="mt-4 border border-[#634da3] text-[#634da3] hover:bg-[#634da3] hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
                             onClick={closeMenu}
                         >
                             Sign up
