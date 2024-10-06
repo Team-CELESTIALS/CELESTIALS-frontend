@@ -23,7 +23,7 @@ const teamMembers = [
   },
   {
     name: "Dipa Joshi",
-    title: "Frontend Developer",
+    title: "Tester",
     image: Dipa,
     social: {
       twitter: ".",

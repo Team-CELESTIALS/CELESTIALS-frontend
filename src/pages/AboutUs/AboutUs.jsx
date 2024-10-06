@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import Team from '../../components/Team';
 import WhatWeDo from '../../components/WhatWeDo/WhatWeDo';
-import './AboutUs.css'; // Importing the CSS for AboutUs page
+import './AboutUs.css'; 
 
 // Animation variants
 const fadeIn = {
