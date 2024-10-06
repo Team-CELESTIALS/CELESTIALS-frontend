@@ -27,16 +27,9 @@ const Profile = () => {
   return (
     <>
       <Navbar />
-      <div className="relative p-4 bg-black overflow-hidden pt-20 min-h-screen">
-        {/* Background Animation */}
-        <div className="bg-animation">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-          <div id="stars4"></div>
-        </div>
-
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg z-10 relative mt-10 max-w-md mx-auto h-auto">
+      <div className="relative p-4 bg-background overflow-hidden pt-20 min-h-screen">
+        
+        <div className="bg-[#ffffff14] p-8 rounded-lg shadow-lg z-10 relative mt-10 max-w-md mx-auto h-auto">
           <h2 className="text-3xl font-bold text-gray-100">User Profile</h2>
           <div className="mt-4">
             <p className="text-gray-300"><strong>Full Name:</strong> {user.fullname}</p>
