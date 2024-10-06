@@ -68,7 +68,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-[#ffffff14] focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-none focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -81,7 +81,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-[#ffffff14] focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-none focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -94,7 +94,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-[#ffffff14] focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
+                    className="w-full p-3 rounded-lg bg-[#ffffff14] text-white border border-none focus:outline-none focus:ring-2 focus:ring-[#634da3] transition duration-300 ease-in-out"
                     placeholder="Type your query here"
                   ></textarea>
                 </div>
