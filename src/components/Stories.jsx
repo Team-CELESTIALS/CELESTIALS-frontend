@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import "../styles/stories.css"
+import UniversePreloader from "../components/preloader/Starfield"; // Import the Preloader
 
 const Stories = () => {
   const [newsArticles, setNewsArticles] = useState([]); // State to hold news articles
@@ -28,11 +29,8 @@ const Stories = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="text-center text-white">
-        <h2 className="text-2xl font-bold">Loading Articles...</h2>
-      </div>
-    );
+    // Display the UniversePreloader while loading
+    return <UniversePreloader />;
   }
 
   return (
@@ -62,7 +60,10 @@ const Stories = () => {
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
+
                   className="bg-primary-mid absolute bottom-5 text-white px-4 py-2 rounded hover:bg-primary-dim transition"
+
+                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#634da3] transition
                 >
                   Read More
                 </a>

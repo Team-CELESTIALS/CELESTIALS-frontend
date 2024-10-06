@@ -26,7 +26,7 @@ const Contact = () => {
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
         toast.success('Email sent successfully!', {
-          position: toast.POSITION.TOP_CENTER,
+       
           autoClose: 3000,
         });
         setIsSubmitted(true); // Set submitted state to true
@@ -34,7 +34,7 @@ const Contact = () => {
       }, (error) => {
         console.error('Failed to send email. Error:', error);
         toast.error('Failed to send email. Please try again.', {
-          position: toast.POSITION.TOP_CENTER,
+        
           autoClose: 3000,
         });
       });
