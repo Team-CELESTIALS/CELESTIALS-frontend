@@ -37,10 +37,10 @@ const teamMembers = [
     title: "Full Stack Developer",
     image: manish,
     social: {
-      twitter: "https://twitter.com/charliebrown",
+      twitter: ".",
       linkedin: "https://linkedin.com/in/manish-joshi-9762b2304/",
       github: "https://github.com/ManishJoc14",
-      instagram: "https://instagram.com/charliebrown",
+      instagram: ".",
     },
   },
   {
@@ -59,7 +59,7 @@ const teamMembers = [
     title: "Tester",
     image: Jelina,
     social: {
-      twitter: "https://twitter.com/evagreen",
+      twitter: ".",
       linkedin: "https://www.linkedin.com/in/jelina-bhatt-2384472b4/",
       github: "https://github.com/jelina-bhatt",
       instagram: "https://instagram.com/jelinabhatt",
@@ -70,10 +70,10 @@ const teamMembers = [
     title: "UI UX Designer",
     image: "https://avatars.githubusercontent.com/u/78907808?v=4",
     social: {
-      twitter: "https://twitter.com/evagreen",
+      twitter: ".",
       linkedin: "https://www.linkedin.com/in/manoj-joshi-6b7662166/",
       github: "https://github.com/manoj-here",
-      instagram: "https://instagram.com/evagreen",
+      instagram: ".",
     },
   },
 ];
