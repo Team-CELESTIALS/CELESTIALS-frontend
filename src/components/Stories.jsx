@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
-import "../styles/stories.css"
+import "../styles/stories.css";
 import UniversePreloader from "../components/preloader/Starfield"; // Import the Preloader
 
 const Stories = () => {
@@ -37,14 +37,13 @@ const Stories = () => {
     <>
       <Navbar />
       <div className="relative p-4 bg-background overflow-hidden pt-20">
-
         <h1 className="text-3xl font-bold text-center pt-8 text-white bg-background">Space News</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-background pb-20 pt-10 px-5">
           {newsArticles.map((article, index) => (
             <div
               key={index}
-              className=" rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 stories-card"
+              className="rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 stories-card"
             >
               <div className="overflow-hidden">
                 <img
@@ -60,10 +59,7 @@ const Stories = () => {
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
-
-                  className="bg-primary-mid absolute bottom-5 text-white px-4 py-2 rounded hover:bg-primary-dim transition"
-
-                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#634da3] transition
+                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#533b92] transition absolute bottom-5"
                 >
                   Read More
                 </a>
