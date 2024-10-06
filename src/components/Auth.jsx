@@ -89,7 +89,7 @@ const Auth = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-black relative overflow-hidden pt-10">
+      <div className="bg-black relative overflow-hidden pt-0">
         {/* Star background effect */}
         <div className="bg-animation">
           <div id="stars"></div>
@@ -98,7 +98,7 @@ const Auth = () => {
           <div id="stars4"></div>
         </div>
 
-        <div className="bg-gray-900 min-h-screen flex justify-center items-start pt-0 lg:pt-10 w-full pt-10 mt-10">
+        <div className="bg-gray-900 min-h-screen flex justify-center items-start lg:pt-32 w-full pt-20">
           <div className="max-w-md bg-gray-800 p-8 rounded-lg shadow-lg z-10 relative">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-bold text-gray-100 ">{mode === "signIn" ? "Welcome Back! 🩵" : "Create New Account 👋"}</h2>

@@ -42,13 +42,13 @@ const Profile = () => {
             <p className="text-gray-300"><strong>Full Name:</strong> {user.fullname}</p>
             <p className="text-gray-300"><strong>Email:</strong> {user.email}</p>
             <p className="text-gray-300"><strong>Registration Number:</strong> {user.registrationNumber}</p>
-            <img src={user.userImage} alt="Profile" className="mt-4 w-24 h-24 rounded-full border-4 border-blue-500" />
+            <img src={user.userImage} alt="Profile" className="mt-4 w-24 h-24 rounded-full border-4 border-[#634da3]" />
           </div>
 
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="mt-6 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+            className="mt-6 border border-[#634da3] text-[#634da3] hover:bg-[#634da3] hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
           >
             Logout
           </button>
