@@ -7,9 +7,10 @@
     justify-content: center;
     padding: 50px 20px;
     color: #ffffff;
+}
 
     .about-us-content {
-        background-color: #ffffff14;
+        background-color: rgba(15, 45, 70, 0.9);
         margin: 2rem 0;
         padding: 2rem;
         border-radius: 10px;
@@ -41,15 +42,9 @@
     }
 
     .feature-icons .icon {
-        max-width: 230px;
+        max-width: 150px;
         text-align: center;
         margin: 1rem;
-        background: #ffffff12;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px 10px;
-        border-radius: 10px;
     }
 
     .feature-icons .icon img {
@@ -62,10 +57,9 @@
         font-size: 1.1rem;
         color: #e5e5e5;
     }
-}
 
 
-
+/* Responsive behavior for smaller screens */
 @media (max-width: 768px) {
     .about-us-content {
         padding: 1.5rem;
@@ -80,11 +74,40 @@
     }
 
     .feature-icons {
-        flex-direction: column;
+        flex-direction: column; /* Stack icons vertically */
         align-items: center;
     }
 
     .feature-icons .icon {
-        margin-bottom: 1rem;
+        width: 100%; /* Take full width */
+        margin: 1.5rem 0;
+    }
+
+    .feature-icons .icon p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+}
+
+/* Extra small screens (Mobile devices) */
+@media (max-width: 480px) {
+    .about-us-content {
+        padding: 1rem;
+    }
+
+    .about-us-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .about-us-content p {
+        font-size: 0.9rem;
+    }
+
+    .feature-icons .icon svg {
+        width: 40px;
+    }
+
+    .feature-icons .icon p {
+        font-size: 0.9rem;
     }
 }

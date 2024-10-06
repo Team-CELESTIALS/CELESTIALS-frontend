@@ -23,8 +23,7 @@ const AboutUs = () => {
           {/* Team Component */}
           <Team />
 
-          {/* Two Columns: About Our Journey and Our Challenge */}
-          <motion.div
+    <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeIn}
@@ -42,7 +41,6 @@ const AboutUs = () => {
               </p>
             </div>
 
-            {/* Challenge Section */}
             <div className="about-challenge">
               <h2 className="text-3xl font-bold text-white mb-4">Our Challenge</h2>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -54,7 +52,6 @@ const AboutUs = () => {
             </div>
           </motion.div>
 
-          {/* What We Do Section */}
           <WhatWeDo />
         </div>
       </div>

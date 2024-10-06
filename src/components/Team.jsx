@@ -15,10 +15,10 @@ const teamMembers = [
     title: "FullStack Developer",
     image: "https://pradipbhatt.com.np/medias/parry.jpg",
     social: {
-      twitter: "https://twitter.com/alicesmith",
-      linkedin: "https://linkedin.com/in/alicesmith",
-      github: "https://github.com/alicesmith",
-      instagram: "https://instagram.com/alicesmith",
+      twitter: ".",
+      linkedin: "https://www.linkedin.com/in/pradipbhatt1326/",
+      github: "https://github.com/pradipbhatt",
+      instagram: "https://instagram.com/pradipbhatt3",
     },
   },
   {
@@ -37,10 +37,10 @@ const teamMembers = [
     title: "Full Stack Developer",
     image: manish,
     social: {
-      twitter: "https://twitter.com/charliebrown",
-      linkedin: "https://linkedin.com/in/charliebrown",
-      github: "https://github.com/charliebrown",
-      instagram: "https://instagram.com/charliebrown",
+      twitter: ".",
+      linkedin: "https://linkedin.com/in/manish-joshi-9762b2304/",
+      github: "https://github.com/ManishJoc14",
+      instagram: ".",
     },
   },
   {
@@ -59,10 +59,10 @@ const teamMembers = [
     title: "Tester",
     image: Jelina,
     social: {
-      twitter: "https://twitter.com/evagreen",
-      linkedin: "https://linkedin.com/in/evagreen",
-      github: "https://github.com/evagreen",
-      instagram: "https://instagram.com/evagreen",
+      twitter: ".",
+      linkedin: "https://www.linkedin.com/in/jelina-bhatt-2384472b4/",
+      github: "https://github.com/jelina-bhatt",
+      instagram: "https://instagram.com/jelinabhatt",
     },
   },
   {
@@ -70,10 +70,10 @@ const teamMembers = [
     title: "UI UX Designer",
     image: "https://avatars.githubusercontent.com/u/78907808?v=4",
     social: {
-      twitter: "https://twitter.com/evagreen",
-      linkedin: "https://linkedin.com/in/evagreen",
-      github: "https://github.com/evagreen",
-      instagram: "https://instagram.com/evagreen",
+      twitter: ".",
+      linkedin: "https://www.linkedin.com/in/manoj-joshi-6b7662166/",
+      github: "https://github.com/manoj-here",
+      instagram: ".",
     },
   },
 ];
