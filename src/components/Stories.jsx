@@ -10,7 +10,7 @@ const Stories = () => {
   useEffect(() => {
     const fetchNewsArticles = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/post");
+        const response = await fetch("https://teamcelestials.vercel.app/api/post");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

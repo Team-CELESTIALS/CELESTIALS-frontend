@@ -28,7 +28,7 @@ const Auth = () => {
     setButtonDisabled(true);
     if (validateInputs()) {
       try {
-        const res = await axios.post("http://localhost:8080/api/user/signup", {
+        const res = await axios.post("https://teamcelestials.vercel.app/api/user/signup", {
           fullname: name,
           email,
           password,
@@ -59,7 +59,7 @@ const Auth = () => {
     setButtonDisabled(true);
     if (validateInputs()) {
       try {
-        const res = await axios.post("http://localhost:8080/api/user/login", {
+        const res = await axios.post("https://teamcelestials.vercel.app/api/user/login", {
           email,
           password,
         });
