@@ -1,136 +1,156 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import Navbar from './Navbar/Navbar';
 
 const SolarSystem = () => {
   const sceneRef = useRef();
-  
+
   const width = window.innerWidth;
   const height = window.innerHeight;
 
-  // Real-world data (scaled down for visualization purposes)
   const celestialData = {
-    sun: { radius: 696340, color: 'yellow' },
-    earth: { radius: 6371, distanceFromSun: 149600000, color: 'blue', orbitSpeed: 0.000005, texture: './earth.jpg' },
-    moon: { radius: 1737.4, distanceFromEarth: 384400, color: 'grey', orbitSpeed: 0.00005, texture: './moon.jpg' },
-    asteroidCount: 100, // Number of asteroids around Earth
+    sun: { radius: 696340 * 2, texture: './sun.png' }, // Double the radius for larger sun
+    earth: { radius: 6371, distanceFromSun: 149600000, texture: './earth.jpg' },
+    moon: { radius: 1737.4, distanceFromEarth: 384400, texture: './moon.jpg' },
+    asteroidCount: 100,
+    cometCount: 500, // Number of comets
+    starCount: 100000, // Number of stars
   };
 
   useEffect(() => {
-    // Setup scene, camera, and renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.001, 10000000);
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
     sceneRef.current.appendChild(renderer.domElement);
 
-    // Create the Sun with light
-    const sunGeometry = new THREE.SphereGeometry(celestialData.sun.radius / 100000, 64, 64); // Scale down Sun's size
-    const sunMaterial = new THREE.MeshBasicMaterial({ color: celestialData.sun.color });
+    // Load textures
+    const textureLoader = new THREE.TextureLoader();
+    const sunTexture = textureLoader.load(celestialData.sun.texture);
+    const earthTexture = textureLoader.load(celestialData.earth.texture);
+    const moonTexture = textureLoader.load(celestialData.moon.texture);
+    
+    // Load Milky Way texture
+    const milkyWayTexture = textureLoader.load('./milkyway_texture.jpg'); // You need to have this texture
+
+    // Create the Milky Way
+    const milkyWayGeometry = new THREE.SphereGeometry(2000, 64, 64);
+    const milkyWayMaterial = new THREE.MeshBasicMaterial({
+      map: milkyWayTexture,
+      side: THREE.BackSide, // Render the inside of the sphere
+      opacity: 0.7,
+      transparent: true,
+    });
+    const milkyWay = new THREE.Mesh(milkyWayGeometry, milkyWayMaterial);
+    scene.add(milkyWay);
+
+    // Create the Sun
+    const sunGeometry = new THREE.SphereGeometry(celestialData.sun.radius / 100000, 84, 84);
+    const sunMaterial = new THREE.MeshStandardMaterial({
+      map: sunTexture,
+      emissive: new THREE.Color(0xff4500), // Orange-red color
+      emissiveIntensity: 2, // Adjust intensity to make it appear brighter
+    });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.position.set(0, 0, -celestialData.earth.distanceFromSun / 1000000);
     scene.add(sun);
 
-    // Sunlight for Earth
-    const sunlight = new THREE.DirectionalLight(0xffffff, 1.5);
-    sunlight.position.set(0, 0, 10); // Position the light to simulate sun direction
+    // Sunlight coming from the Sun
+    const sunlight = new THREE.DirectionalLight(0xffffff, 2); // Increase light intensity
+    sunlight.position.set(0, 0, -celestialData.earth.distanceFromSun / 1000000);
     scene.add(sunlight);
 
-    // Load Earth texture
-    const textureLoader = new THREE.TextureLoader();
-    const earthTexture = textureLoader.load(celestialData.earth.texture);
+    // Ambient light
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+    scene.add(ambientLight);
 
-    // Create the Earth with shading (day/night effect)
+    // Create the Earth
     const earthGeometry = new THREE.SphereGeometry(celestialData.earth.radius / 1000, 32, 32);
-    const earthMaterial = new THREE.MeshPhongMaterial({ map: earthTexture });
+    const earthMaterial = new THREE.MeshStandardMaterial({ map: earthTexture });
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earth);
 
     // Create the Moon
     const moonGeometry = new THREE.SphereGeometry(celestialData.moon.radius / 1000, 32, 32);
-    const moonMaterial = new THREE.MeshBasicMaterial({ color: celestialData.moon.color });
+    const moonMaterial = new THREE.MeshStandardMaterial({ map: moonTexture });
     const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-    earth.add(moon); // Add the moon as a child of the Earth for rotation
+    earth.add(moon); // Add Moon to Earth
 
-    // Position the Earth
-    earth.position.x = celestialData.earth.distanceFromSun / 1000000;
-
-    // Orbit Ellipse for Earth
-    const earthOrbitCurve = new THREE.EllipseCurve(
-      0, 0, // Center
-      celestialData.earth.distanceFromSun / 1000000, celestialData.earth.distanceFromSun / 1500000, // X and Z radius for ellipse
-      0, 2 * Math.PI // Start and end angle
-    );
-
-    const earthOrbitPath = new THREE.Path(earthOrbitCurve.getPoints(100));
-    const earthOrbitGeometry = new THREE.BufferGeometry().setFromPoints(earthOrbitPath.getPoints());
-    const earthOrbitMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
-    const earthOrbitLine = new THREE.Line(earthOrbitGeometry, earthOrbitMaterial);
-    scene.add(earthOrbitLine);
-
-    // Orbit Ellipse for Moon
-    const moonOrbitCurve = new THREE.EllipseCurve(
-      0, 0, 
-      celestialData.moon.distanceFromEarth / 5000, celestialData.moon.distanceFromEarth / 6000, 
-      0, 2 * Math.PI
-    );
-    const moonOrbitPath = new THREE.Path(moonOrbitCurve.getPoints(100));
-    const moonOrbitGeometry = new THREE.BufferGeometry().setFromPoints(moonOrbitPath.getPoints());
-    const moonOrbitMaterial = new THREE.LineBasicMaterial({ color: 0xffff00 });
-    const moonOrbitLine = new THREE.Line(moonOrbitGeometry, moonOrbitMaterial);
-    earth.add(moonOrbitLine);
-
-    // Set up orbit controls for user interaction
+    // Set up orbit controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.maxPolarAngle = Math.PI / 2;
 
-    // Move camera back to view the entire solar system
-    camera.position.set(0, 0, 100);
+    // Initial camera position far away from the solar system
+    camera.position.set(0, 50, 150);
+    controls.target.set(0, 0, 0);
+    controls.update();
 
-    // Stars background
-    const starGeometry = new THREE.SphereGeometry(90, 64, 64);
-    const starMaterial = new THREE.MeshBasicMaterial({
-      map: textureLoader.load('./stars.jpg'),
-      side: THREE.BackSide
-    });
-    const starField = new THREE.Mesh(starGeometry, starMaterial);
-    scene.add(starField);
+    // Create realistic stars
+    const starsGeometry = new THREE.BufferGeometry();
+    const starPositions = new Float32Array(celestialData.starCount * 3); // 3 coordinates per star
+    for (let i = 0; i < celestialData.starCount; i++) {
+      const x = (Math.random() - 0.5) * 2000; // Random X position
+      const y = (Math.random() - 0.5) * 2000; // Random Y position
+      const z = (Math.random() - 0.5) * 2000; // Random Z position
+      starPositions.set([x, y, z], i * 3);
+    }
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
 
-    // Create asteroid belt around Earth
+    // Create the star material
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5 });
+    const stars = new THREE.Points(starsGeometry, starMaterial);
+    scene.add(stars);
+
+    // Create asteroid belt
     const asteroidGeometry = new THREE.SphereGeometry(0.02, 8, 8);
-    const asteroidMaterial = new THREE.MeshBasicMaterial({ color: 'gray' });
+    const asteroidMaterial = new THREE.MeshStandardMaterial({ color: 'gray' });
 
     for (let i = 0; i < celestialData.asteroidCount; i++) {
       const asteroid = new THREE.Mesh(asteroidGeometry, asteroidMaterial);
-
-      // Randomize asteroid positions in orbit around Earth
       const distanceFromEarth = (celestialData.earth.radius / 800) + Math.random() * 2;
       const angle = Math.random() * Math.PI * 2;
       const x = distanceFromEarth * Math.cos(angle);
       const z = distanceFromEarth * Math.sin(angle);
-
       asteroid.position.set(x, 0, z);
-      earth.add(asteroid); // Add asteroid as a child of Earth for orbiting effect
+      earth.add(asteroid);
     }
 
-    // Animate celestial objects
+    // Create comets
+    const cometGeometry = new THREE.SphereGeometry(0.03, 8, 8);
+    const cometMaterial = new THREE.MeshStandardMaterial({ color: 'white' });
+
+    for (let i = 0; i < celestialData.cometCount; i++) {
+      const comet = new THREE.Mesh(cometGeometry, cometMaterial);
+      const distanceFromSun = (celestialData.earth.distanceFromSun / 1000000) + Math.random() * 5; // Random distance from Sun
+      const angle = Math.random() * Math.PI * 2;
+      const x = distanceFromSun * Math.cos(angle);
+      const z = distanceFromSun * Math.sin(angle);
+      comet.position.set(x, 0, z);
+      scene.add(comet);
+    }
+
+    // Animate celestial objects and handle day/night cycle
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Earth's orbit around the Sun
-      const timeFactor = 0.0005; // Slow down the orbit speed
-      earth.rotation.y += celestialData.earth.orbitSpeed; // Earth's rotation
+      // Camera zooming effect
+      if (camera.position.z > 1) {
+        camera.position.z -= 1; // Adjust speed of zoom
+      }
 
-      // Calculate Earth's orbit position (simple elliptical orbit)
-      const earthOrbitX = celestialData.earth.distanceFromSun / 1000000 * Math.cos(Date.now() * timeFactor);
-      const earthOrbitZ = (celestialData.earth.distanceFromSun / 1500000) * Math.sin(Date.now() * timeFactor);
-      earth.position.set(earthOrbitX, 0, earthOrbitZ);
+      // Earth's rotation for day/night cycle
+      earth.rotation.y += 0.001; // Speed of Earth's rotation
 
-      // Moon's orbit around the Earth
-      const moonOrbitX = celestialData.moon.distanceFromEarth / 5000 * Math.cos(Date.now() * celestialData.moon.orbitSpeed);
-      const moonOrbitZ = celestialData.moon.distanceFromEarth / 6000 * Math.sin(Date.now() * celestialData.moon.orbitSpeed);
-      moon.position.set(moonOrbitX, 0, moonOrbitZ);
+      // Update Moon's position around the Earth (slower orbit speed)
+      const moonOrbitX = (celestialData.moon.distanceFromEarth / 10000) * Math.cos(Date.now() * 0.0002); // Slower speed
+      const moonOrbitZ = (celestialData.moon.distanceFromEarth / 10000) * Math.sin(Date.now() * 0.0002); // Slower speed
+      moon.position.set(moonOrbitX + earth.position.x, 0, moonOrbitZ + earth.position.z); // Position relative to Earth
+
+      // Moon's rotation on its axis
+      moon.rotation.y += 0.002; // Adjust the speed of Moon's rotation
 
       controls.update();
       renderer.render(scene, camera);
@@ -138,7 +158,6 @@ const SolarSystem = () => {
 
     animate();
 
-    // Cleanup
     return () => {
       sceneRef.current.removeChild(renderer.domElement);
       renderer.dispose();
@@ -146,9 +165,12 @@ const SolarSystem = () => {
   }, []);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', background: 'black' }}>
+   <>
+   <Navbar/>
+   <div>
       <div ref={sceneRef} />
     </div>
+   </>
   );
 };
 
