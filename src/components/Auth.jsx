@@ -92,7 +92,7 @@ const Auth = () => {
       <div className="bg-black relative overflow-hidden pt-0">
 
         <div className="bg-background min-h-screen flex justify-center items-start lg:pt-32 w-full pt-20">
-          <div className="max-w-md bg-[#ffffff14] p-8 rounded-lg shadow-lg z-10 relative">
+          <div className="max-w-md bg-[#ffffff14] p-8 rounded-lg shadow-lg z-10 relative mt-10">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-bold text-gray-100 ">{mode === "signIn" ? "Welcome Back! 💜" : "Create New Account 👋"}</h2>
               <p className="text-[#ffffff40] mt-3">{mode === "signIn" ? "Please login with your details here" : "Please enter your details to create a new account"}</p>
