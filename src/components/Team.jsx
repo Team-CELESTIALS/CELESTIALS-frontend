@@ -82,20 +82,15 @@ const Team = () => {
   return (
     <>
       {/* Background */}
-      <div className="bg-black">
-        <div className="bg-animation">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-          <div id="stars4"></div>
-        </div>
-        <div className="bg-gray-900 min-h-screen flex flex-col items-center pb-10">
+      <div className="bg-background">
+
+        <div className="bg-background min-h-screen flex flex-col items-center pb-10">
           <h1 className="text-4xl font-bold text-center mb-5 text-white pt-24">Meet Our Team</h1>
-          
+
           {/* Team introduction content */}
           <p className="text-center text-lg text-gray-300 mb-8 px-4">
-            We are Team Celestials, a passionate group of innovators participating in the NASA Space Apps Hackathon. Our goal is to 
-            create solutions that have a lasting impact. Each member of our team brings a unique skill set, whether it's frontend 
+            We are Team Celestials, a passionate group of innovators participating in the NASA Space Apps Hackathon. Our goal is to
+            create solutions that have a lasting impact. Each member of our team brings a unique skill set, whether it's frontend
             development, backend systems, testing, documentaion or full-stack expertise. Together, we push the boundaries of technology.
           </p>
 
@@ -104,7 +99,8 @@ const Team = () => {
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg backdrop-blur-lg transition-all duration-300 transform hover:scale-105 hover:bg-opacity-50 hover:shadow-lg hover:shadow-blue-500/50 w-80" // Set a consistent width for each card
+                className="text-white rounded-lg overflow-hidden shadow-lg backdrop-blur-lg transition-all duration-300 transform hover:scale-105 hover:bg-opacity-50 hover:shadow-lg hover:shadow-primary-dim w-80" // Set a consistent width for each card
+                style={{ background: '#ffffff12'}}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: index * 0.1 }}
@@ -118,35 +114,35 @@ const Team = () => {
                   <h2 className="text-xl font-semibold mb-1">{member.name}</h2>
                   <p className="text-gray-400 mb-4">{member.title}</p>
                   <div className="flex justify-center space-x-4">
-                    <a 
-                      href={member.social.twitter} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-400 hover:text-blue-600 transition duration-300"
+                    <a
+                      href={member.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-light hover:text-primary-dim transition duration-300"
                     >
                       <FaTwitter size={20} />
                     </a>
-                    <a 
-                      href={member.social.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-400 hover:text-blue-600 transition duration-300"
+                    <a
+                      href={member.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-light hover:text-primary-dim transition duration-300"
                     >
                       <FaLinkedin size={20} />
                     </a>
-                    <a 
-                      href={member.social.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-400 hover:text-blue-600 transition duration-300"
+                    <a
+                      href={member.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-light hover:text-primary-dim transition duration-300"
                     >
                       <FaGithub size={20} />
                     </a>
-                    <a 
-                      href={member.social.instagram} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-400 hover:text-blue-600 transition duration-300"
+                    <a
+                      href={member.social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-light hover:text-primary-dim transition duration-300"
                     >
                       <FaInstagram size={20} />
                     </a>

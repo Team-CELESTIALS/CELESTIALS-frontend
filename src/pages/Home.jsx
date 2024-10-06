@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../styles/background.css";
 import "../styles/home.css";
 import Footer from '../components/Footer/Footer';
 import Navbar from "../components/Navbar/Navbar";
@@ -10,20 +9,19 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the loader has been shown before
-    const hasLoadedBefore = localStorage.getItem("hasLoadedBefore");
+    // Check if the preloader has been displayed before
+    const preloaderShown = localStorage.getItem("preloaderShown");
 
-    if (!hasLoadedBefore) {
-      // Show the preloader for 5 seconds on the first load
+    if (!preloaderShown) {
       const timeout = setTimeout(() => {
         setLoading(false);
-        // Set the flag in localStorage so it doesn't show again
-        localStorage.setItem("hasLoadedBefore", "true");
-      }, 5000); // 5 seconds for the loading
+        // Set in localStorage that the preloader has been shown
+        localStorage.setItem("preloaderShown", "true");
+      }, 3500); // 3.5 seconds for the loading
 
       return () => clearTimeout(timeout);
     } else {
-      // If already loaded, skip the preloader
+      // If the preloader has been shown, set loading to false immediately
       setLoading(false);
     }
   }, []);
@@ -35,7 +33,7 @@ const Home = () => {
       ) : (
         <>
           <Navbar />
-          <div className="bg-black">
+          <div className="bg-background">
             <Cards />
           </div>
           <Footer />

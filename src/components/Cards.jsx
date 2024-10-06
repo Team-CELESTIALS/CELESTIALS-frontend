@@ -31,17 +31,10 @@ const cardData = [
 const Cards = () => {
   return (
     <div className="bg-black">
-      {/* Background animation */}
-      <div className="bg-animation">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="stars4"></div>
-      </div>
 
-      <div className="px-4 bg-gray-900 min-h-screen flex flex-col items-center pb-10">
-        <h1 className="text-4xl font-bold pb-10 text-white text-center mt-0 pt-36"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      <div className="px-4 bg-background min-h-screen flex flex-col items-center pb-10">
+        <h1 className="text-4xl font-bold mb-10 text-center p-0 mt-36 bg-gradient-to-b from-white to-gray-600 bg-clip-text text-transparent"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Welcome to the Universe
         </h1>
 
@@ -49,14 +42,14 @@ const Cards = () => {
           {cardData.map((card) => (
             <div
               key={card.id}
-              className="bg-transparent text-white rounded-lg overflow-hidden shadow-lg backdrop-blur-lg transition-all duration-500 transform hover:scale-105 hover:bg-opacity-50 hover:shadow-lg hover:shadow-blue-500/50"
+              className=" text-white overflow-hidden transition-all duration-500 transform hover:scale-105 custom-card"
             >
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-64 card-pic">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-contain"
-                  style={{ objectFit: 'contain', fontFamily: 'Montserrat, sans-serif'  }} // Ensures image fits without being cropped
+                  className="w-full h-full object-c"
+                  style={{ objectFit: 'cover', fontFamily: 'Montserrat, sans-serif'  }} // Ensures image fits without being cropped
                 />
               </div>
 
@@ -65,7 +58,7 @@ const Cards = () => {
                 <p className="text-gray-300 mb-4">{card.description}</p>
                 <Link
                   to={card.route}
-                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-900 transition duration-500 hover:shadow-lg"
+                  className="inline-block bg-primary-mid text-white px-4 py-2 rounded shadow hover:bg-primary-dim transition duration-500 hover:shadow-lg"
                 >
                   Learn More
                 </Link>

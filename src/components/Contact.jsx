@@ -51,14 +51,8 @@ const Contact = () => {
       <div>
         {/* Background */}
         <div className="bg-black relative overflow-hidden">
-          <div className="bg-animation">
-            <div id="stars"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
-            <div id="stars4"></div>
-          </div>
 
-          <div className="bg-gray-900 min-h-screen flex justify-center items-center pt-0 lg:pt-10 w-full">
+          <div className="bg-background min-h-screen flex justify-center items-center pt-0 lg:pt-10 w-full">
             {!isSubmitted ? ( // Check if form is submitted
               <form
                 onSubmit={handleSubmit}

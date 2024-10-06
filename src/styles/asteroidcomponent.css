@@ -1,0 +1,36 @@
+.date-picker{
+    top: 100px;
+    background-color: #ffffff20;
+    backdrop-filter: blur(10px);
+
+    & .input{
+        background: #adc4ff20;
+        border-radius: 3px;
+
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+.sidebar-toggle{
+    top: 100px;
+    background-color: #ffffff20;
+    font-size: 1.3rem;
+    backdrop-filter: blur(10px);
+}
+
+.sidebar{
+    background: #ffffff20;
+    backdrop-filter: blur(10px);
+    width: 348px;
+    border-radius: 4px;
+    top: 154px;
+    height: 600px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+}

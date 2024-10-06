@@ -45,7 +45,7 @@ const AsteroidComponent = () => {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
+    <div className="bg-background text-white min-h-screen">
       <div className="container p-8 mx-auto">
         <h1 className=" text-4xl sm:text-5xl text-center font-bold mb-16">
           Near-Earth Asteroids

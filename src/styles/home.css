@@ -10,41 +10,48 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
   }
-  
+/*
   h1, h2, h3, h4, h5, h6 {
-    text-shadow: 0.5px 0.5px 8px white; 
     color: white;
     font-weight: bold;
-  }
-  
+  } */
+
+
   a {
     text-decoration: none;
   }
-  
+
   .section {
     z-index: 100;
   }
-  
+
   /* NAVBAR */
-  
+
+.custom-nav{
+    width: calc(100% - 20px);
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #a4a4a413;
+    backdrop-filter: blur(40px);
+}
+
   .navbar a {
-    color: #fff;
     margin-right: 50px;
     font-size: 1.5rem;
     cursor: pointer;
     text-shadow: 0.5px 0.5px 9px white;
   }
-  
+
   nav .logo img {
     max-width: 150px;
   }
-  
+
   .navbar-expand-lg {
     padding: 10px;
   }
-  
+
   /* HEADER */
-  
+
   header {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)),
       url("../images/bg22.jpg");
@@ -56,9 +63,9 @@
     padding: 10px;
     border-radius: 0 0 70px 70px;
   }
-  
+
   /* ANIMATED BUTTON */
-  
+
   .animated-button1 {
     background: linear-gradient(-30deg, #000000 50%, #090909 50%);
     padding: 20px 40px;
@@ -74,7 +81,7 @@
     text-decoration: none;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   }
-  
+
   .animated-button1::before {
     content: "";
     position: absolute;
@@ -86,15 +93,15 @@
     opacity: 0;
     transition: 0.2s opacity ease-in-out;
   }
-  
+
   .animated-button1:hover::before {
     opacity: 0.2;
   }
-  
+
   .animated-button1 span {
     position: absolute;
   }
-  
+
   .animated-button1 span:nth-child(1) {
     top: 0;
     left: 0;
@@ -103,7 +110,7 @@
     background: linear-gradient(to left, #26d9d3, #26d9d3);
     animation: 2s animateTop linear infinite;
   }
-  
+
   @keyframes animateTop {
     0% {
       transform: translateX(100%);
@@ -112,7 +119,7 @@
       transform: translateX(-100%);
     }
   }
-  
+
   .animated-button1 span:nth-child(2) {
     top: 0;
     right: 0;
@@ -121,7 +128,7 @@
     background: linear-gradient(to top, #26d9d3, #26d9d3);
     animation: 2s animateRight linear -1s infinite;
   }
-  
+
   @keyframes animateRight {
     0% {
       transform: translateY(100%);
@@ -130,7 +137,7 @@
       transform: translateY(-100%);
     }
   }
-  
+
   .animated-button1 span:nth-child(3) {
     bottom: 0;
     left: 0;
@@ -139,7 +146,7 @@
     background: linear-gradient(to right, #26d9d3, #26d9d3);
     animation: 2s animateBottom linear infinite;
   }
-  
+
   @keyframes animateBottom {
     0% {
       transform: translateX(-100%);
@@ -148,7 +155,7 @@
       transform: translateX(100%);
     }
   }
-  
+
   .animated-button1 span:nth-child(4) {
     top: 0;
     left: 0;
@@ -157,7 +164,7 @@
     background: linear-gradient(to bottom, #26d9d3, #26d9d3);
     animation: 2s animateLeft linear -1s infinite;
   }
-  
+
   @keyframes animateLeft {
     0% {
       transform: translateY(-100%);
@@ -166,30 +173,30 @@
       transform: translateY(100%);
     }
   }
-  
+
   /* SECTION  */
   section {
     z-index: 1000;
   }
-  
+
   .section {
     transform: translateY(150px);
     opacity: 0.2;
     transition: opacity 0.5s, transform 1.5s;
   }
-  
+
   .visible {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   /* CARDS */
-  
+
   .cards-container h1 {
     font-size: 4rem;
     font-weight: bold;
   }
-  
+
   .card {
     margin: 25px;
     box-shadow: 0.5px 0.5px 10px darkblue;
@@ -197,36 +204,36 @@
     background: transparent;
     color: white;
   }
-  
+
   .card button {
     box-shadow: 0.5px 0.5px 10px blue;
     margin-top: 10px;
   }
-  
+
   .card button a {
     color: #fff;
   }
-  
+
   .card button:hover {
     box-shadow: 1px 1px 20px blue;
   }
-  
+
   .gravity_section {
     color: #fff;
     margin: 60px 0;
     text-align: start;
   }
-  
+
   .gravity_section h1 {
     font-size: 4rem;
     font-weight: bold;
   }
-  
+
   .gravity_section .astronaut img {
-    animation: floating 4s infinite ease-in-out; 
+    animation: floating 4s infinite ease-in-out;
     margin-bottom: 50px;
   }
-  
+
   @keyframes floating {
     0% {
       transform: translateY(0px);
@@ -238,11 +245,23 @@
       transform: translateY(0px);
     }
   }
-  
+
   @media screen and (max-width: 1200px) {
     .gravity_section h1,
     .cards-container h1 {
       text-align: center;
     }
   }
-  
+
+  .custom-card{
+    background: #ffffff12;
+    border-radius: 20px;
+
+    & .card-pic{
+        width: calc(100% - 16px);
+        margin: 8px;
+        border-radius: 15px;
+        background: #00000042;
+        overflow: hidden;
+    }
+  }

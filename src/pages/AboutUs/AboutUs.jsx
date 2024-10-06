@@ -17,15 +17,9 @@ const AboutUs = () => {
     <div>
       <Navbar />
       {/* Background */}
-      <div className="bg-black">
-        <div className="bg-animation">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-          <div id="stars4"></div>
-        </div>
+      <div className="bg-background">
 
-        <div className="about-us-container bg-gray-900">
+        <div className="about-us-container bg-background">
           {/* Team Component */}
           <Team />
 
@@ -53,8 +47,8 @@ const AboutUs = () => {
               <h2 className="text-3xl font-bold text-white mb-4">Our Challenge</h2>
               <p className="text-lg text-gray-300 leading-relaxed">
                 The NASA Space Apps challenge tasked us with creating an interactive model of the solar system, commonly known as an orrery.
-                Our web app displays celestial bodies, including planets, Near-Earth Asteroids, Near-Earth Comets, and Potentially Hazardous 
-                Asteroids. By combining our technical skills and passion for space exploration, we aim to deliver an immersive experience that 
+                Our web app displays celestial bodies, including planets, Near-Earth Asteroids, Near-Earth Comets, and Potentially Hazardous
+                Asteroids. By combining our technical skills and passion for space exploration, we aim to deliver an immersive experience that
                 educates and fascinates users about our universe.
               </p>
             </div>

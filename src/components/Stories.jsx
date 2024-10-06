@@ -37,7 +37,7 @@ const Stories = () => {
   return (
     <>
       <Navbar />
-      <div className="relative p-4 bg-black overflow-hidden pt-20">
+      <div className="relative p-4 bg-background overflow-hidden pt-20">
         {/* Background Animation */}
         <div className="bg-animation">
           <div id="stars"></div>
@@ -45,17 +45,17 @@ const Stories = () => {
           <div id="stars3"></div>
           <div id="stars4"></div>
         </div>
-        <h1 className="text-3xl font-bold text-center pt-8 text-white bg-gray-900">Space News</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-gray-900 pb-20 pt-10 px-5">
+        <h1 className="text-3xl font-bold text-center pt-8 text-white bg-background">Space News</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-background pb-20 pt-10 px-5">
           {newsArticles.map((article, index) => (
             <div
               key={index}
               className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-1000 hover:scale-105"
             >
               <div className="overflow-hidden">
-                <img 
-                  src={article.image} 
-                  alt={article.title} 
+                <img
+                  src={article.image}
+                  alt={article.title}
                   className="w-full h-48 object-cover transition-transform duration-1000 transform hover:scale-110"
                 />
               </div>

@@ -9,6 +9,7 @@ const moonTextureUrl =
 import Navbar from "../components/Navbar/Navbar";
 import DatePicker from "react-datepicker"; // Import date picker
 import "react-datepicker/dist/react-datepicker.css"; // Import date picker CSS
+import "../../src/styles/asteroidcomponent.css"
 
 const EARTH_RADIUS_KM = 6371; // Earth's radius in kilometers
 const ASTEROID_SIZE = 60; // Default size for the asteroid object
@@ -215,20 +216,20 @@ const AsteroidGlobe = () => {
         <div ref={globeEl} className="w-full h-screen" />
 
         {/* Date Picker */}
-        <div className="fixed top-16 left-12 z-50 bg-gray-800 text-white p-2 rounded shadow-lg">
+        <div className="fixed left-12 z-50 text-white p-2 rounded shadow-lg date-picker">
           <label>Select a Date: </label>
           <DatePicker
             selected={startDate}
             onChange={handleDateChange}
             dateFormat="yyyy-MM-dd"
-            className="text-gray-800 p-1"
+            className="text-white p-1 input"
           />
         </div>
 
         <div
-          className={`fixed top-32 left-0 bg-gray-800 text-white p-4 transition-transform duration-300 ease-in-out ${
+          className={`fixed left-2 text-white p-4 sidebar transition-transform duration-300 ease-in-out ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } w-80 h-screen overflow-y-auto shadow-lg`}
+          }`}
         >
           <h2 className="text-center mb-4 ">Asteroids</h2>
           <ul className="list-none p-0">
@@ -247,10 +248,10 @@ const AsteroidGlobe = () => {
             ))}
           </ul>
         </div>
-        {/* Toggle Button at the top right */}
+        {/* Toggle Button at the top left */}
         <button
           onClick={toggleSidebar}
-          className="fixed top-16 left-2 z-50 bg-gray-800 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700"
+          className="fixed left-2 z-50 text-white p-2 rounded shadow-lg transition duration-300 hover:bg-gray-700 sidebar-toggle"
         >
           {sidebarOpen ? "✖" : "☰"} {/* Hamburger and close icon */}
         </button>
