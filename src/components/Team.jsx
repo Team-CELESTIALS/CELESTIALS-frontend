@@ -15,10 +15,10 @@ const teamMembers = [
     title: "FullStack Developer",
     image: "https://pradipbhatt.com.np/medias/parry.jpg",
     social: {
-      twitter: "https://twitter.com/alicesmith",
-      linkedin: "https://linkedin.com/in/alicesmith",
-      github: "https://github.com/alicesmith",
-      instagram: "https://instagram.com/alicesmith",
+      twitter: ".",
+      linkedin: "https://www.linkedin.com/in/pradipbhatt1326/",
+      github: "https://github.com/pradipbhatt",
+      instagram: "https://instagram.com/pradipbhatt3",
     },
   },
   {
@@ -38,8 +38,8 @@ const teamMembers = [
     image: manish,
     social: {
       twitter: "https://twitter.com/charliebrown",
-      linkedin: "https://linkedin.com/in/charliebrown",
-      github: "https://github.com/charliebrown",
+      linkedin: "https://linkedin.com/in/manish-joshi-9762b2304/",
+      github: "https://github.com/ManishJoc14",
       instagram: "https://instagram.com/charliebrown",
     },
   },
