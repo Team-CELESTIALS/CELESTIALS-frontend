@@ -17,7 +17,7 @@ const Admin = () => {
   // Fetch all posts
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/post');
+      const response = await axios.get('https://teamcelestials.vercel.app/api/post');
       setPosts(response.data);
     } catch (error) {
       console.error('Failed to fetch posts:', error);
@@ -34,9 +34,9 @@ const Admin = () => {
     const postData = { title, content, author, image, link, description, tags: tags.split(',') };
     try {
       if (currentId) {
-        await axios.put(`http://localhost:8080/api/post/${currentId}`, postData);
+        await axios.put(`https://teamcelestials.vercel.app/api/post/${currentId}`, postData);
       } else {
-        await axios.post('http://localhost:8080/api/post', postData);
+        await axios.post('https://teamcelestials.vercel.app/api/post', postData);
       }
       clearForm();
       fetchPosts();
@@ -72,7 +72,7 @@ const Admin = () => {
   // Delete post
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/post/${id}`);
+      await axios.delete(`https://teamcelestials.vercel.app/api/post/${id}`);
       fetchPosts();
     } catch (error) {
       console.error('Failed to delete post:', error);
