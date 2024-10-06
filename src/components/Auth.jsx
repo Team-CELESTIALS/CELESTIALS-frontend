@@ -90,25 +90,18 @@ const Auth = () => {
     <>
       <Navbar />
       <div className="bg-black relative overflow-hidden pt-0">
-        {/* Star background effect */}
-        <div className="bg-animation">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-          <div id="stars4"></div>
-        </div>
 
-        <div className="bg-gray-900 min-h-screen flex justify-center items-start lg:pt-32 w-full pt-20">
-          <div className="max-w-md bg-gray-800 p-8 rounded-lg shadow-lg z-10 relative">
+        <div className="bg-background min-h-screen flex justify-center items-start lg:pt-32 w-full pt-20">
+          <div className="max-w-md bg-[#ffffff14] p-8 rounded-lg shadow-lg z-10 relative mt-10">
             <div className="text-center mb-6">
-              <h2 className="text-3xl font-bold text-gray-100 ">{mode === "signIn" ? "Welcome Back! 🩵" : "Create New Account 👋"}</h2>
-              <p className="text-gray-600">{mode === "signIn" ? "Please login with your details here" : "Please enter your details to create a new account"}</p>
+              <h2 className="text-3xl font-bold text-gray-100 ">{mode === "signIn" ? "Welcome Back! 💜" : "Create New Account 👋"}</h2>
+              <p className="text-[#ffffff40] mt-3">{mode === "signIn" ? "Please login with your details here" : "Please enter your details to create a new account"}</p>
             </div>
             <div className="space-y-4">
               {mode === "signUp" && (
                 <input
                   type="text"
-                  className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
+                  className="w-full p-3 bg-[#ffffff14] border-[#ffffff14] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -116,14 +109,14 @@ const Auth = () => {
               )}
               <input
                 type="email"
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
+                className="w-full p-3 bg-[#ffffff14] border-[#ffffff14] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
                 placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
+                className="w-full p-3 bg-[#ffffff14] border-[#ffffff14] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -132,14 +125,14 @@ const Auth = () => {
                 <>
                   <input
                     type="text"
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
+                    className="w-full p-3 bg-[#ffffff14] border-[#ffffff14] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
                     placeholder="Registration Number"
                     value={registrationNumber}
                     onChange={(e) => setRegistrationNumber(e.target.value)}
                   />
                   <input
                     type="url"
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
+                    className="w-full p-3 bg-[#ffffff14] border-[#ffffff14] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#634da3]"
                     placeholder="User Image URL"
                     value={userImage}
                     onChange={(e) => setUserImage(e.target.value)}

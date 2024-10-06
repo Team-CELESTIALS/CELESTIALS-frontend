@@ -16,7 +16,7 @@ const Navbar = () => {
     const [user, setUser] = useState(null); // State for user data
 
     // Sample user profile image URL
-    const userProfileImage = 'https://pluspng.com/img-png/png-user-icon-circled-user-icon-2240.png'; 
+    const userProfileImage = 'https://pluspng.com/img-png/png-user-icon-circled-user-icon-2240.png';
 
     // Navigation links
     const navLinks = [
@@ -78,7 +78,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Mobile menu button */}
-            
+
 <button
     className="block lg:hidden text-white focus:outline-none z-50" // Set z-50 to ensure it appears above the black background
     type="button"
@@ -142,7 +142,7 @@ const Navbar = () => {
                         animate={{ opacity: 1 }} // Fade in
                         exit={{ opacity: 0 }} // Fade out
                         transition={{ duration: 0.5 }} // Transition duration
-                        className="fixed inset-0 z-30 bg-black lg:hidden" // Full black overlay
+                        className="fixed inset-0 z-30 bg-background lg:hidden" // Full black overlay
                         onClick={closeMenu} // Close menu when clicking the overlay
                     />
 
@@ -152,7 +152,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }} // Slide down to original position
                         exit={{ opacity: 0, y: -50 }} // Slide back up
                         transition={{ duration: 0.5 }} // Slower transition
-                        className="fixed inset-0 z-40 h-screen bg-black lg:hidden" // Full black background for the mobile menu
+                        className="fixed inset-0 z-70 h-screen bg-background lg:hidden m-o -top-[10px] -left-[10px]"
                     >
                         {/* Center-aligned links rendering with animation */}
                         <div className="flex flex-col items-center justify-center h-full">
@@ -173,7 +173,7 @@ const Navbar = () => {
                             {/* Sign up button for mobile menu */}
                             <Link
                                 to="/signup"
-                                className="mt-4 border border-[#634da3] text-[#634da3] hover:bg-[#634da3] hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
+                                className="mb-24 border border-[#634da3] text-[#634da3] hover:bg-[#634da3] hover:text-white transition duration-300 ease-in-out rounded-full px-4 py-2 font-bold"
                                 onClick={closeMenu}
                             >
                                 Sign up

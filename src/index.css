@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* custom scroll bars  */
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #191928;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #865eff77;
+    border-radius: 6px;
+    border:solid 3px #191928;
+    width: 6px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #865eff;
+}

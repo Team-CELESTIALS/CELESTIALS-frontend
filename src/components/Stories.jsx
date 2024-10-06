@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import "../styles/stories.css"
 import UniversePreloader from "../components/preloader/Starfield"; // Import the Preloader
 
 const Stories = () => {
@@ -36,35 +37,33 @@ const Stories = () => {
     <>
       <Navbar />
       <div className="relative p-4 bg-background overflow-hidden pt-20">
-        {/* Background Animation */}
-        <div className="bg-animation">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-          <div id="stars4"></div>
-        </div>
+
         <h1 className="text-3xl font-bold text-center pt-8 text-white bg-background">Space News</h1>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-background pb-20 pt-10 px-5">
           {newsArticles.map((article, index) => (
             <div
               key={index}
-              className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-1000 hover:scale-105"
+              className=" rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 stories-card"
             >
               <div className="overflow-hidden">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-48 object-cover transition-transform duration-1000 transform hover:scale-110"
+                  className="w-full h-48 object-cover"
                 />
               </div>
-              <div className="p-4">
+              <div className="p-4 relative pb-14">
                 <h2 className="text-xl font-semibold text-white mb-2">{article.title}</h2>
                 <p className="text-gray-400 mb-4">{article.description}</p>
                 <a
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#634da3] transition"
+
+                  className="bg-primary-mid absolute bottom-5 text-white px-4 py-2 rounded hover:bg-primary-dim transition"
+
+                  className="bg-[#634da3] text-white px-4 py-2 rounded hover:bg-[#634da3] transition
                 >
                   Read More
                 </a>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css'; 
+import './Footer.css';
 import { FaYoutube, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'; // Using react-icons for icons
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <p className="slogan">"Exploring the cosmos, one asteroid at a time."</p>
-        
+
         <ul className="social-links">
           <li>
             <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
@@ -35,7 +35,7 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        
+
         <p>© 2024 NASA Space Apps | Solar System Tracker</p>
         <p>All rights reserved | Designed and Developed by Team Celestials</p>
       </div>
