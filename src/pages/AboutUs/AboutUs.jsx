@@ -16,7 +16,6 @@ const AboutUs = () => {
   return (
     <div>
       <Navbar />
-      {/* Background */}
       <div className="bg-black">
         <div className="bg-animation">
           <div id="stars"></div>
@@ -24,13 +23,10 @@ const AboutUs = () => {
           <div id="stars3"></div>
           <div id="stars4"></div>
         </div>
-
         <div className="about-us-container bg-gray-900">
-          {/* Team Component */}
           <Team />
 
-          {/* Two Columns: About Our Journey and Our Challenge */}
-          <motion.div
+    <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeIn}
@@ -38,7 +34,7 @@ const AboutUs = () => {
             className="about-content-container"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            {/* Journey Section */}
+        
             <div className="about-journey">
               <h2 className="text-3xl font-bold text-white mb-4">About Our Journey</h2>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -48,7 +44,6 @@ const AboutUs = () => {
               </p>
             </div>
 
-            {/* Challenge Section */}
             <div className="about-challenge">
               <h2 className="text-3xl font-bold text-white mb-4">Our Challenge</h2>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -60,7 +55,6 @@ const AboutUs = () => {
             </div>
           </motion.div>
 
-          {/* What We Do Section */}
           <WhatWeDo />
         </div>
       </div>

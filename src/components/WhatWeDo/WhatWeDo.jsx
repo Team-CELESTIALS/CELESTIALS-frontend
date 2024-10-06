@@ -17,7 +17,7 @@ const WhatWeDo = () => {
                 <div className="feature-icons">
                     <div className="icon">
                         <FaRocket size={50} color="#00ffcc" /> {/* Icon for Asteroids */}
-                        <p>Track asteroids and monitor their real-time approach towards Earth.</p>
+                        <p>Track different asteroids and monitor their real time approach towards Earth.</p>
                     </div>
                     <div className="icon">
                         <FaMoon size={50} color="#ffcc00" /> {/* Icon for Satellites */}
