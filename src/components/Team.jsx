@@ -60,9 +60,9 @@ const teamMembers = [
     image: Jelina,
     social: {
       twitter: "https://twitter.com/evagreen",
-      linkedin: "https://linkedin.com/in/evagreen",
-      github: "https://github.com/evagreen",
-      instagram: "https://instagram.com/evagreen",
+      linkedin: "https://www.linkedin.com/in/jelina-bhatt-2384472b4/",
+      github: "https://github.com/jelina-bhatt",
+      instagram: "https://instagram.com/jelinabhatt",
     },
   },
   {
@@ -71,8 +71,8 @@ const teamMembers = [
     image: "https://avatars.githubusercontent.com/u/78907808?v=4",
     social: {
       twitter: "https://twitter.com/evagreen",
-      linkedin: "https://linkedin.com/in/evagreen",
-      github: "https://github.com/evagreen",
+      linkedin: "https://www.linkedin.com/in/manoj-joshi-6b7662166/",
+      github: "https://github.com/manoj-here",
       instagram: "https://instagram.com/evagreen",
     },
   },
