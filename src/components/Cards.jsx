@@ -2,22 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import solar from '../../public/solar.gif';
 import sate from '../../public/sate.gif';
-import asteroids from '../../public/asteroid.jpg';
+import astro from '../../public/astro.gif';
 
 // Card data
 const cardData = [
   {
     id: 1,
-    title: 'Asteroids ',
-    image: asteroids,
+    title: 'Asteroids',
+    image: astro,
     description: 'Explore the beauty of our planet.',
-    route: '/astroid-card',
+    route: '/asteroid',
   },
   {
     id: 2,
     title: 'Satellites',
     image: sate,
-    description: 'Discover the wonders of satellites orbiting our planet.',
+    description: 'Learn about the celestial bodies that orbit our sun.',
     route: '/earth-details',
   },
   {

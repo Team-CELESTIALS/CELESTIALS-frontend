@@ -29,7 +29,7 @@ const GlobeComponent = () => {
     // Zoom-in travel effect from space
     setTimeout(() => {
       world.pointOfView({ altitude: 50, lat: 0, lng: 0 }, 0); // Start far from Earth
-      world.pointOfView({ altitude: 3.5 }, 3000); // Zoom to close view in 3 seconds
+      world.pointOfView({ altitude: 1.5 }, 2000); // Zoom to close view in 3 seconds
     }, 500);
 
     // Load Satellite 3D model
