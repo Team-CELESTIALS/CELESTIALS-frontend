@@ -6,7 +6,7 @@ import Footer from './Footer/Footer';
 import Dipa from '../assets/dipa-image.jpg';
 import Asish from '../../public/Asish.jpg';
 import manish from '../../public/manish.jpg';
-import Jelina from '../../public/jelina.jpg';
+import Jelina from '../../public/jelina.jpeg';
 
 // Sample data for team members with social media links
 const teamMembers = [

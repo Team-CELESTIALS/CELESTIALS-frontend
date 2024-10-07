@@ -5,12 +5,12 @@ import Stories from './components/Stories';
 
 const Admin = () => {
   const [posts, setPosts] = useState([1]);
-  const [title, setTitle] = useState('Welcome to MUltiverse');
-  const [content, setContent] = useState('Hello from Multiverse !');
-  const [author, setAuthor] = useState('Padip Bhatt');
+  const [title, setTitle] = useState('Welcome to Multiverse');
+  const [content, setContent] = useState('Hello from Multiverse!');
+  const [author, setAuthor] = useState('Pradip Bhatt');
   const [image, setImage] = useState('https://www.pradipbhatt.com.np/medias/parry.jpg');
-  const [link, setLink] = useState('https://pradipbhatt.com.npp');
-  const [description, setDescription] = useState('We are on the Milky way !');
+  const [link, setLink] = useState('https://pradipbhatt.com.np');
+  const [description, setDescription] = useState('We are on the Milky way!');
   const [tags, setTags] = useState('#Multiverse, #Best');
   const [currentId, setCurrentId] = useState(null);
 
@@ -100,14 +100,14 @@ const Admin = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <textarea
               placeholder="Content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <input
               type="text"
@@ -115,34 +115,34 @@ const Admin = () => {
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               required
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <input
               type="text"
               placeholder="Image URL"
               value={image}
               onChange={(e) => setImage(e.target.value)}
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <input
               type="text"
               placeholder="Link"
               value={link}
               onChange={(e) => setLink(e.target.value)}
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <textarea
               placeholder="Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <input
               type="text"
               placeholder="Tags (comma separated)"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-              className="block w-full p-2 mb-2 border rounded text-black"
+              className="block w-full p-2 mb-2 border rounded bg-gray-800 text-white placeholder-gray-400"
             />
             <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
               {currentId ? 'Update Post' : 'Create Post'}

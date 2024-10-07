@@ -18,17 +18,18 @@ const AsteroidCard = ({ asteroid }) => {
         <p>
           <strong>Diameter:</strong> {asteroid.diameter} km
         </p>
-        <a
-          href={asteroid.nasa_jpl_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 underline mr-2"
+
+        {/* Updated View Details Button */}
+        <button
+          className="inline-block bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-lg shadow-md hover:from-purple-600 hover:to-indigo-700 transition-transform transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-purple-400"
         >
           View Details
-        </a>
+        </button>
+
+        {/* Updated View Orbit Link */}
         <Link
           to={`/orbit/${asteroid.id}`}
-          className="text-blue-400 underline"
+          className="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 ml-4 rounded-lg shadow-md hover:from-green-600 hover:to-teal-700 transition-transform transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400"
         >
           View Orbit
         </Link>

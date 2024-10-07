@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import solar from '../../public/solar.gif';
+import sate from '../../public/sate.gif';
+import asteroids from '../../public/asteroid.jpg';
 
 // Card data
 const cardData = [
   {
     id: 1,
-    title: 'Earth',
-    image: 'https://www.agiratech.com/wp-content/uploads/2020/02/Google-map.gif',
+    title: 'Asteroids ',
+    image: asteroids,
     description: 'Explore the beauty of our planet.',
-    route: '/earth-details',
+    route: '/astroid-card',
   },
   {
     id: 2,
     title: 'Satellites',
-    image: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHRmcmp6NjAyYnFhcXF2dHk3ZDl6N285eTB1eTc1MzZwYzB6M3lyOCZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/pj8JBNy4rExF29o411/giphy.webp',
+    image: sate,
     description: 'Discover the wonders of satellites orbiting our planet.',
-    route: '/satellites-details',
+    route: '/earth-details',
   },
   {
     id: 3,

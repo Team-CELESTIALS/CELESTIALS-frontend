@@ -15,6 +15,8 @@ import OrbitViewer from "./components/asteroid/OrbitViewer";
 import Signup from "../src/components/Auth";
 import Profile from "./components/Profile";
 import Admin from "./Admin";
+import AsteroidCard from '../src/components/asteroid/AsteroidComponent';
+
 
 const App = () => {
   return (
@@ -32,6 +34,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/data-visualize" element={<AsteroidGlobe />} />
+        <Route path="/astroid-card" element={<AsteroidCard/>} />
         <Route path="/orbit/:asteroidId" element={<OrbitViewer />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
